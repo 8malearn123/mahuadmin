@@ -1,4 +1,5 @@
-import type { ViewId } from './types';
+import { ROLES } from './roles';
+import type { RoleId, ViewId } from './types';
 
 export interface ViewDef {
   href: string;
@@ -9,6 +10,8 @@ export interface ViewDef {
   subtitle: string;
   /** Whether the header shows the period tabs. */
   showPeriod?: boolean;
+  /** Hides the header branch tabs on screens that aren't about branch data. */
+  hideBranch?: boolean;
 }
 
 export const VIEWS: Record<ViewId, ViewDef> = {
@@ -74,11 +77,25 @@ export const VIEWS: Record<ViewId, ViewDef> = {
     title: 'إدارة الفروع',
     subtitle: 'فرعا جازان وأبو عريش مع عزل بيانات كل فرع',
   },
+  users: {
+    href: '/users',
+    label: 'المستخدمون',
+    title: 'إدارة المستخدمين',
+    subtitle: 'دعوة أعضاء الفريق وإسناد الأدوار والفروع وإيقاف الحسابات',
+    hideBranch: true,
+  },
   roles: {
     href: '/roles',
     label: 'الصلاحيات',
     title: 'الصلاحيات (RBAC)',
     subtitle: 'كل دور يرى ما يخصّه فقط — عزل على مستوى قاعدة البيانات',
+  },
+  account: {
+    href: '/account',
+    label: 'حسابي',
+    title: 'حسابي',
+    subtitle: 'بياناتك وتفضيلاتك وأمان حسابك والأجهزة المتصلة',
+    hideBranch: true,
   },
 };
 
@@ -89,8 +106,13 @@ export const NAV_GROUPS: { title: string; views: ViewId[] }[] = [
   { title: 'التشغيل اليومي', views: ['orders', 'boxes', 'log'] },
   { title: 'العملاء', views: ['lookup', 'loyalty', 'customer'] },
   { title: 'المقهى', views: ['menu', 'inbound'] },
-  { title: 'الإدارة', views: ['branches', 'roles'] },
+  { title: 'الإدارة', views: ['branches', 'users', 'roles'] },
 ];
+
+/** The screen a role opens on after signing in. */
+export function landingHref(role: RoleId): string {
+  return VIEWS[ROLES[role].views[0]].href;
+}
 
 const VIEW_BY_HREF = new Map(
   (Object.entries(VIEWS) as [ViewId, ViewDef][]).map(([id, def]) => [def.href, id]),

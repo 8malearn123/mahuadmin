@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
-import { ROLES, DEFAULT_ROLE } from '@/lib/roles';
-import { VIEWS } from '@/lib/views';
+import { getAuth, homeFor } from '@/lib/auth/dal';
 
-export default function Home() {
-  redirect(VIEWS[ROLES[DEFAULT_ROLE].views[0]].href);
+/** "/" opens the account's first screen, or whichever sign-in step it is on. */
+export default async function Home() {
+  redirect(homeFor(await getAuth()));
 }

@@ -16,14 +16,16 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    * the click handler is responsible for ignoring it.
    */
   inactive?: boolean;
+  /** Full-width button with roomier padding (sign-in and account forms). */
+  block?: boolean;
 }
 
-export function Button({ variant = 'ghost', pad, inactive, className, type = 'button', ...rest }: ButtonProps) {
+export function Button({ variant = 'ghost', pad, inactive, block, className, type = 'button', ...rest }: ButtonProps) {
   return (
     <button
       type={type}
       aria-disabled={inactive || undefined}
-      className={cx(styles.button, styles[variant], pad === 20 && styles.pad20, pad === 22 && styles.pad22, className)}
+      className={cx(styles.button, styles[variant], pad === 20 && styles.pad20, pad === 22 && styles.pad22, block && styles.block, className)}
       {...rest}
     />
   );

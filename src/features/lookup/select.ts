@@ -2,8 +2,8 @@ import { sar, maskPhone } from '@/lib/format';
 import { BOX_SCHEDULE } from '@/lib/data/boxes';
 import { ORDER_LOG } from '@/lib/data/orders';
 import { CUSTOMERS } from '@/lib/data/people';
-import { ROLES, inRoleScope, isMultiBranch, matchesBranch } from '@/lib/roles';
-import type { DashboardState } from '@/lib/store/reducer';
+import { inRoleScope, isMultiBranch, matchesBranch } from '@/lib/roles';
+import { activeRole, type DashboardState } from '@/lib/store/reducer';
 import type { Customer, LogStatus, PiiLevel, Tone } from '@/lib/types';
 
 function shownPhone(phone: string, pii: PiiLevel): string {
@@ -23,7 +23,7 @@ function historyTone(status: LogStatus): Tone {
 }
 
 export function selectLookup(state: DashboardState, query: string, selectedPhone: string | null) {
-  const role = ROLES[state.role];
+  const role = activeRole(state);
   const pii = role.pii;
   const q = query.trim();
   // Lookups are limited to the role's branch scope; the header branch tab does not narrow the hits.
