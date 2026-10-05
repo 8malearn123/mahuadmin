@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { DashboardProvider } from '@/lib/store/DashboardProvider';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -13,9 +12,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ar" dir="rtl">
-      <body>
-        <DashboardProvider>{children}</DashboardProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -14,7 +14,9 @@ export type ViewId =
   | 'menu'
   | 'inbound'
   | 'branches'
-  | 'roles';
+  | 'users'
+  | 'roles'
+  | 'account';
 
 export type Period = 'اليوم' | 'أمس' | '7 أيام' | '30 يومًا';
 
@@ -26,16 +28,24 @@ export type Tone = 'ok' | 'bad' | 'muted' | 'ink' | 'brand' | 'refund';
 
 export interface RoleDef {
   name: string;
-  user: string;
   scope: string;
   tone: Tone;
   /** Screens the role can open; the first one is its landing screen. */
   views: ViewId[];
-  /** Branch filter options; the first one is selected when switching to the role. */
+  /**
+   * Branch filter options; the first one is selected when switching to the role.
+   * Single-branch roles show the signed-in user's own branch instead (see scopeRole).
+   */
   branches: string[];
+  /** Staff role limited to the branch the account is assigned to ("فرع جازان فقط"). */
+  perBranch: boolean;
   editMenu: boolean;
   pii: PiiLevel;
   note: string;
+  /** Minutes without activity before the session locks; null = never (personal devices). */
+  idleMinutes: number | null;
+  /** Whether sign-in asks for a WhatsApp code after the password. */
+  twoStep: 'required' | 'optional';
 }
 
 export type OrderType = 'فوري' | 'بوكس';

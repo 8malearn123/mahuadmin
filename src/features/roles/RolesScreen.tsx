@@ -3,7 +3,16 @@ import { toneColor } from '@/lib/tones';
 import { Card } from '@/ui/Card';
 import styles from './roles.module.css';
 
-export function RolesScreen() {
+interface AuditEvent {
+  key: string;
+  time: string;
+  text: string;
+  actor: string;
+}
+
+/** `events`: audit entries recorded by the platform (sign-ins, invitations, role changes), newest first. */
+export function RolesScreen({ events }: { events: AuditEvent[] }) {
+  const log = [...events, ...AUDIT_LOG.map((a) => ({ ...a, key: 'seed-' + a.time }))];
   return (
     <div className={styles.screen}>
       <Card pad="none" className={styles.table}>
@@ -26,8 +35,8 @@ export function RolesScreen() {
       <div className={styles.columns}>
         <Card className={styles.audit}>
           <h2 className={styles.title}>سجل التدقيق</h2>
-          {AUDIT_LOG.map((a) => (
-            <div key={a.time} className={styles.auditRow}>
+          {log.map((a) => (
+            <div key={a.key} className={styles.auditRow}>
               <span className={styles.time}>{a.time}</span>
               <span className={styles.auditText}>{a.text}</span>
               <span className={styles.actor}>{a.actor}</span>

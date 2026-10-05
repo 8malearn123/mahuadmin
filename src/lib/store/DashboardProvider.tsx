@@ -1,7 +1,7 @@
 'use client';
 
-import { createContext, useCallback, useContext, useMemo, useReducer, type Dispatch } from 'react';
-import { createInitialState, reducer, type Action, type DashboardState } from './reducer';
+import { createContext, useCallback, useContext, useEffect, useMemo, useReducer, type Dispatch } from 'react';
+import { createInitialState, reducer, type Action, type DashboardAccount, type DashboardState } from './reducer';
 
 interface DashboardContextValue {
   state: DashboardState;
@@ -11,11 +11,16 @@ interface DashboardContextValue {
 const DashboardContext = createContext<DashboardContextValue | null>(null);
 
 /**
- * Holds the dashboard's mock data and session edits. It lives in the root layout,
- * so state survives navigation between screens and resets on a full reload.
+ * Holds the dashboard's mock data and session edits for the signed-in account. It lives in
+ * the dashboard layout, so state survives navigation between screens and resets on a full
+ * reload or when another account signs in (the layout keys it by account and data scope).
  */
-export function DashboardProvider({ children }: { children: React.ReactNode }) {
-  const [state, dispatch] = useReducer(reducer, undefined, createInitialState);
+export function DashboardProvider({ account, children }: { account: DashboardAccount; children: React.ReactNode }) {
+  const [state, dispatch] = useReducer(reducer, account, createInitialState);
+  const { role, branch } = account;
+  useEffect(() => {
+    dispatch({ type: 'syncAccount', account: { role, branch } });
+  }, [role, branch]);
   const value = useMemo(() => ({ state, dispatch }), [state]);
   return <DashboardContext value={value}>{children}</DashboardContext>;
 }

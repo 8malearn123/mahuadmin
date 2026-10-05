@@ -1,0 +1,43 @@
+.list {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--pnl);
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.text {
+  flex: 1;
+  display: grid;
+  gap: 3px;
+}
+
+.title {
+  font-size: 13px;
+}
+
+.desc {
+  font-size: 11.5px;
+  color: var(--mut);
+  line-height: 1.6;
+}
+
+.locked {
+  font-size: 11px;
+  color: var(--ok);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 2px 8px;
+  white-space: nowrap;
+}

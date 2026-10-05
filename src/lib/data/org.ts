@@ -36,6 +36,12 @@ export const BRANCH_CARDS: BranchCard[] = [
 
 export const BRANCH_CITIES = ['جازان', 'أبو عريش', 'صبيا', 'الدرب', 'أبها'];
 
+/** How each operating branch is introduced to customers (onboarding, preferred branch). */
+export const BRANCH_INFO: Record<string, { title: string; meta: string }> = {
+  'جازان': { title: 'فرع جازان — الكورنيش', meta: 'نافذة استلام مسبق · 7 ص – 12 م' },
+  'أبو عريش': { title: 'فرع أبو عريش', meta: 'طلب فوري وحجز بوكسات · 6 بوكسات يوميًا' },
+};
+
 export const EMPTY_BRANCH_DRAFT: BranchDraft = {
   name: '',
   city: 'جازان',
@@ -46,7 +52,7 @@ export const EMPTY_BRANCH_DRAFT: BranchDraft = {
 };
 
 export const ROLE_SUMMARIES: { name: string; tone: Tone; scope: string; perms: string }[] = [
-  { name: 'مدير النظام', tone: 'bad', scope: 'كامل المنصة', perms: 'كل الوحدات، الصلاحيات، السياسات، الفروع، سجل التدقيق.' },
+  { name: 'مدير النظام', tone: 'bad', scope: 'كامل المنصة', perms: 'كل الوحدات، المستخدمون والدعوات، الصلاحيات، السياسات، الفروع، سجل التدقيق.' },
   { name: 'الإدارة العامة', tone: 'ok', scope: 'كل الفروع', perms: 'المنيو، البوكسات، العروض، التقارير، الواردات.' },
   { name: 'مدير الفرع', tone: 'ok', scope: 'فرعه فقط', perms: 'طلبات فرعه، التوفّر، العمليات اليومية.' },
   { name: 'الباريستا / الكاشير', tone: 'ok', scope: 'فرعه فقط', perms: 'استقبال الطلبات وتحديث حالتها وطابور التجهيز، واستعلام محدود عن العميل (اسم ونقاط فقط).' },
@@ -64,6 +70,7 @@ export const AUDIT_LOG = [
 ];
 
 export const SECURITY_CONTROLS = [
+  { title: 'تحقق بخطوتين وقفل تلقائي للجلسات', desc: 'رمز واتساب إلزامي لمدير النظام، وتُقفل الشاشة بعد 10–15 دقيقة من عدم النشاط.' },
   { title: 'عزل صفّي (RLS) على قاعدة البيانات', desc: 'الصلاحيات تُطبَّق في الطبقة الأدنى لا في الواجهة فقط.' },
   { title: 'استضافة داخل المملكة وتشفير كامل', desc: 'تشفير أثناء النقل والتخزين ونسخ احتياطية تلقائية.' },
   { title: 'امتثال PDPL وضوابط NCA', desc: 'سياسات احتفاظ بالبيانات ومراجعة دورية.' },

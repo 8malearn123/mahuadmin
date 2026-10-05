@@ -1,6 +1,6 @@
 import { bookingFromDraft } from '../data/boxes';
 import { BASE_ORDERS } from '../data/orders';
-import { ALL_BRANCHES, DEFAULT_ROLE, ROLES, isMultiBranch } from '../roles';
+import { ALL_BRANCHES, ROLES, isMultiBranch, scopeRole } from '../roles';
 import type {
   Addon,
   AddonDraft,
@@ -14,10 +14,18 @@ import type {
   NewBranch,
   Order,
   Period,
+  RoleDef,
   RoleId,
 } from '../types';
 
+/** The signed-in account's own role and branch; `role` below differs only while an admin previews another role. */
+export interface DashboardAccount {
+  role: RoleId;
+  branch: string;
+}
+
 export interface DashboardState {
+  account: DashboardAccount;
   role: RoleId;
   branch: string;
   period: Period;
@@ -52,10 +60,19 @@ export const boxImageKey = (boxName: string) => 'box:' + boxName;
 /** UI state cleared by a role switch: the inline add-on form closes, as in the design. */
 const UI_RESET_ON_ROLE_SWITCH = ['menu.addonOpen'];
 
-export function createInitialState(): DashboardState {
+/**
+ * The role the dashboard is showing. The account's own role is narrowed to its branch;
+ * a previewed role keeps its sample scope (Jazan for single-branch roles).
+ */
+export function activeRole(state: Pick<DashboardState, 'account' | 'role'>): RoleDef {
+  return state.role === state.account.role ? scopeRole(ROLES[state.role], state.account.branch) : ROLES[state.role];
+}
+
+export function createInitialState(account: DashboardAccount): DashboardState {
   return {
-    role: DEFAULT_ROLE,
-    branch: ROLES[DEFAULT_ROLE].branches[0],
+    account,
+    role: account.role,
+    branch: activeRole({ account, role: account.role }).branches[0],
     period: 'اليوم',
     orders: BASE_ORDERS,
     bookingsAdded: [],
@@ -75,6 +92,7 @@ export function createInitialState(): DashboardState {
 }
 
 export type Action =
+  | { type: 'syncAccount'; account: DashboardAccount }
   | { type: 'switchRole'; role: RoleId }
   | { type: 'setBranch'; branch: string }
   | { type: 'setPeriod'; period: Period }
@@ -94,8 +112,8 @@ export type Action =
   | { type: 'setUi'; key: string; value: unknown; initial: unknown };
 
 /** Header branch tabs: the role's branches, plus cities of added branches for multi-branch roles. */
-export function branchOptions(state: Pick<DashboardState, 'role' | 'branchesAdded'>): string[] {
-  const role = ROLES[state.role];
+export function branchOptions(state: Pick<DashboardState, 'account' | 'role' | 'branchesAdded'>): string[] {
+  const role = activeRole(state);
   if (!isMultiBranch(role)) return role.branches;
   const extra = state.branchesAdded.map((b) => b.city).filter((c) => !role.branches.includes(c));
   return [...role.branches, ...new Set(extra)];
@@ -109,10 +127,17 @@ function without<T>(record: Record<string, T>, key: string): Record<string, T> {
 
 export function reducer(state: DashboardState, action: Action): DashboardState {
   switch (action.type) {
+    case 'syncAccount': {
+      // The account changed on the server without a data-scope change (e.g. a customer's preferred branch).
+      if (action.account.role === state.account.role && action.account.branch === state.account.branch) return state;
+      const next = { ...state, account: action.account };
+      const options = branchOptions(next);
+      return options.includes(next.branch) ? next : { ...next, branch: options[0] };
+    }
     case 'switchRole': {
       const ui = { ...state.ui };
       for (const key of UI_RESET_ON_ROLE_SWITCH) delete ui[key];
-      return { ...state, role: action.role, branch: ROLES[action.role].branches[0], ui };
+      return { ...state, role: action.role, branch: activeRole({ ...state, role: action.role }).branches[0], ui };
     }
     case 'setBranch':
       return { ...state, branch: action.branch };
