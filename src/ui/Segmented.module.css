@@ -1,0 +1,38 @@
+.track {
+  display: flex;
+  background: var(--pnl);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  gap: 2px;
+}
+
+.inset {
+  background: var(--pnl2);
+}
+
+.option {
+  cursor: pointer;
+  padding: 6px 13px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  background: transparent;
+  color: var(--ink-700);
+}
+
+.md {
+  font-size: 12.5px;
+}
+
+.wide {
+  padding: 6px 14px;
+}
+
+.option[aria-pressed='true'] {
+  background: var(--teal-700);
+  color: var(--cream-200);
+}
+
+.paper[aria-pressed='true'] {
+  color: var(--cream-100);
+}

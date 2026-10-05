@@ -1,0 +1,349 @@
+.screen {
+  display: grid;
+  gap: 14px;
+}
+
+.title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.meta {
+  font-size: 11.5px;
+  color: var(--mut);
+}
+
+.small {
+  font-size: 11px;
+  color: var(--mut);
+}
+
+/* ---- Filters ---- */
+.filters {
+  display: grid;
+  gap: 12px;
+}
+
+.filterRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.categoryRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.category {
+  cursor: pointer;
+  font-size: 12.5px;
+  padding: 7px 15px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: #FFFFFF;
+  color: #274B4C;
+}
+
+.category[aria-pressed='true'] {
+  background: #045A5E;
+  color: #FFF1DF;
+}
+
+.categoryCount {
+  font-family: var(--font-num);
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.clearFilters {
+  cursor: pointer;
+  font-size: 11.5px;
+  color: var(--txt-brand);
+  border-bottom: 1px solid var(--palm);
+}
+
+/* ---- Product form ---- */
+.imageRow {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.formImage {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--pnl2);
+  border: 1px solid var(--line);
+  flex: 0 0 auto;
+}
+
+.imageText {
+  display: grid;
+  gap: 4px;
+  min-width: 180px;
+  flex: 1;
+}
+
+.imageTitle {
+  font-size: 12px;
+}
+
+.imageHint {
+  font-size: 11px;
+  color: var(--mut);
+  line-height: 1.7;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.addonPicker {
+  display: grid;
+  gap: 9px;
+}
+
+.addonPickerHead {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  padding: 7px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #E4D8C6;
+  background: #F7E8D3;
+  color: #274B4C;
+}
+
+.chip[aria-pressed='true'] {
+  border-color: #067B80;
+  background: #045A5E;
+  color: #FFF1DF;
+}
+
+.chipMark {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.chipPrice {
+  font-family: var(--font-num);
+  font-size: 10.5px;
+  opacity: 0.75;
+}
+
+/* ---- Menu table ---- */
+.table {
+  overflow-x: auto;
+}
+
+.headRow,
+.row {
+  display: grid;
+  grid-template-columns: 96px minmax(150px, 2.4fr) minmax(80px, 1fr) minmax(70px, 0.9fr) minmax(90px, 0.9fr) 62px;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.headRow {
+  padding: 12px 18px;
+  font-size: 11.5px;
+  color: var(--mut);
+  background: var(--pnl2);
+}
+
+.row {
+  padding: 13px 18px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.rowImage {
+  width: 96px;
+  height: 96px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--pnl2);
+  border: 1px solid var(--line);
+}
+
+.itemCell {
+  display: grid;
+  gap: 3px;
+}
+
+.itemNameRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.remove {
+  cursor: pointer;
+  font-size: 10px;
+  color: var(--mut);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 1px 6px;
+}
+
+.remove:hover {
+  color: var(--bad);
+  border-color: var(--bad);
+}
+
+.itemAddons {
+  font-size: 10.5px;
+  color: var(--mut);
+}
+
+.itemCat {
+  font-size: 12px;
+  color: var(--mut);
+}
+
+.itemPrice {
+  font-family: var(--font-num);
+  font-size: 13px;
+  color: var(--txt-brand);
+}
+
+.edit {
+  cursor: pointer;
+  font-size: 11.5px;
+  text-align: center;
+  padding: 6px 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  color: var(--mut);
+}
+
+.edit:hover {
+  color: var(--txt-brand);
+  border-color: var(--txt-brand);
+}
+
+.empty {
+  padding: 34px 20px;
+  text-align: center;
+  display: grid;
+  gap: 8px;
+}
+
+.emptyTitle {
+  font-size: 13.5px;
+}
+
+/* ---- Addon bank ---- */
+.bank {
+  display: grid;
+  gap: 12px;
+}
+
+.bankHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.bankToggle {
+  cursor: pointer;
+  font-size: 12.5px;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--palm);
+  color: var(--txt-brand);
+}
+
+.addonForm {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  align-items: end;
+  background: var(--pnl2);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+
+.addonSave {
+  cursor: pointer;
+  text-align: center;
+  font-size: 12.5px;
+  padding: 11px 18px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  background: var(--teal-700);
+  color: var(--cream-200);
+}
+
+.addonSave[aria-disabled='true'] {
+  background: var(--line-strong);
+  color: var(--ink-700);
+}
+
+.addonList {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.addon {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--pnl2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 9px 13px;
+}
+
+.addonName {
+  font-size: 12.5px;
+}
+
+.addonGroup {
+  font-size: 10.5px;
+  color: var(--mut);
+}
+
+.addonPrice {
+  font-family: var(--font-num);
+  font-size: 12px;
+  color: var(--txt-brand);
+}
+
+.addonRemove {
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--mut);
+  padding: 0 2px;
+}
+
+.addonRemove:hover {
+  color: var(--bad);
+}

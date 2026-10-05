@@ -1,0 +1,135 @@
+.screen {
+  display: grid;
+  gap: 14px;
+}
+
+.table {
+  overflow-x: auto;
+}
+
+.headRow,
+.row {
+  display: grid;
+  grid-template-columns: minmax(130px, 1.1fr) minmax(90px, 1fr) minmax(200px, 2.2fr);
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.headRow {
+  padding: 12px 20px;
+  font-size: 11.5px;
+  color: var(--mut);
+  background: var(--pnl2);
+}
+
+.row {
+  padding: 14px 20px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.roleName {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.name {
+  font-weight: 500;
+}
+
+.scope {
+  font-size: 12px;
+  color: var(--mut);
+}
+
+.perms {
+  font-size: 12.5px;
+  color: var(--mut);
+  line-height: 1.7;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+}
+
+.title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.audit {
+  display: grid;
+  gap: 9px;
+}
+
+.auditRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 12.5px;
+}
+
+.time {
+  font-family: var(--font-num);
+  font-size: 11px;
+  color: var(--mut);
+}
+
+.auditText {
+  flex: 1;
+}
+
+.actor {
+  font-size: 11px;
+  color: var(--mut);
+}
+
+.security {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.control {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--pnl2);
+}
+
+.controlDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--fill-ok);
+  margin-top: 4px;
+}
+
+.controlBody {
+  display: grid;
+  gap: 3px;
+}
+
+.controlTitle {
+  font-size: 12.5px;
+}
+
+.controlDesc {
+  font-size: 11px;
+  color: var(--mut);
+  line-height: 1.6;
+}
