@@ -1,0 +1,197 @@
+.screen {
+  display: grid;
+  gap: 14px;
+}
+
+.addBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: var(--pnl);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  padding: 14px 18px;
+}
+
+.addText {
+  font-size: 12.5px;
+  color: var(--mut);
+  line-height: 1.7;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+
+.card {
+  padding: 20px;
+  display: grid;
+  gap: 14px;
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.state {
+  font-size: 11px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 3px 9px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: 10px;
+}
+
+.stat {
+  background: var(--pnl2);
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+  display: grid;
+  gap: 4px;
+}
+
+.statLabel {
+  font-size: 11px;
+  color: var(--mut);
+}
+
+.statValue {
+  font-family: var(--font-num);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.team {
+  display: grid;
+  gap: 7px;
+}
+
+.teamTitle {
+  font-size: 12px;
+  color: var(--mut);
+}
+
+.teamList {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.member {
+  font-size: 11.5px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 5px 11px;
+  color: var(--ink);
+}
+
+.memberRole {
+  color: var(--mut);
+}
+
+.note {
+  font-size: 11.5px;
+  color: var(--mut);
+  line-height: 1.7;
+  border-top: 1px solid var(--line);
+  padding-top: 11px;
+}
+
+/* ---- Branches added this session ---- */
+.newCard {
+  background: var(--pnl);
+  border: 1px dashed var(--mango);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: grid;
+  gap: 12px;
+}
+
+.details {
+  display: grid;
+  gap: 8px;
+  font-size: 12.5px;
+}
+
+.detail,
+.detailLast {
+  display: flex;
+  gap: 10px;
+}
+
+.detail {
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.detailLabel {
+  color: var(--mut);
+}
+
+.address {
+  text-align: left;
+  max-width: 62%;
+}
+
+.newFoot {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding-top: 11px;
+}
+
+.newHint {
+  font-size: 11.5px;
+  color: var(--mut);
+  line-height: 1.7;
+}
+
+.remove {
+  cursor: pointer;
+  font-size: 11.5px;
+  color: var(--mut);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 5px 12px;
+}
+
+.remove:hover {
+  color: var(--bad);
+  border-color: var(--bad);
+}
+
+/* ---- Add-branch form ---- */
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.managerHint {
+  font-size: 10.5px;
+  color: var(--mut);
+}

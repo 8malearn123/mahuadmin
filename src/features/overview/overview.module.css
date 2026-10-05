@@ -1,0 +1,250 @@
+.screen {
+  display: grid;
+  gap: 18px;
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 14px;
+}
+
+.lists {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.listTitle {
+  margin: 0 0 12px;
+}
+
+.meta {
+  font-size: 11.5px;
+  color: var(--mut);
+}
+
+/* ---- Orders by hour ---- */
+.chartHead {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 170px;
+}
+
+/* The bars row takes the column height left over by the label. In the original the
+   row was auto-sized, which collapsed every bar to 0px and left the chart empty. */
+.hour {
+  flex: 1;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 6px;
+  justify-items: center;
+  align-content: end;
+  height: 100%;
+}
+
+.hourBars {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 100%;
+}
+
+.barNow,
+.barPrev {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+}
+
+.barNow {
+  background: var(--teal-700);
+}
+
+.barPrev {
+  background: var(--pnl2);
+}
+
+.hourLabel {
+  font-size: 10px;
+  color: var(--mut);
+  font-family: var(--font-num);
+}
+
+/* ---- Branch performance ---- */
+.branches {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.branch {
+  display: grid;
+  gap: 7px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.branchHead {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.branchName {
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.branchSales {
+  font-family: var(--font-num);
+  font-size: 14px;
+  color: var(--txt-brand);
+}
+
+.branchMeta {
+  display: flex;
+  gap: 14px;
+  font-size: 11.5px;
+  color: var(--mut);
+}
+
+.newBranch {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+}
+
+.newBranchName {
+  font-size: 13px;
+}
+
+.pending {
+  font-size: 11px;
+  color: var(--warn);
+}
+
+.legend {
+  display: flex;
+  gap: 10px;
+  font-size: 11.5px;
+  color: var(--mut);
+  padding-top: 2px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ---- Top items ---- */
+.topItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.rank {
+  font-family: var(--font-num);
+  font-size: 11px;
+  color: var(--mut);
+  width: 18px;
+}
+
+.itemName {
+  font-size: 13px;
+  flex: 1;
+}
+
+.qty {
+  font-family: var(--font-num);
+  font-size: 12.5px;
+  color: var(--mut);
+}
+
+.itemSales {
+  font-family: var(--font-num);
+  font-size: 12.5px;
+  color: var(--txt-brand);
+  width: 64px;
+  text-align: left;
+}
+
+/* ---- Channels ---- */
+.channel {
+  display: grid;
+  gap: 6px;
+  padding: 9px 0;
+}
+
+.channelHead {
+  display: flex;
+  font-size: 13px;
+}
+
+.channelPct {
+  font-family: var(--font-num);
+  color: var(--mut);
+}
+
+/* ---- Alerts ---- */
+.alerts {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.alert {
+  display: flex;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--pnl2);
+  border-right: 3px solid var(--tone);
+}
+
+.alertBody {
+  display: grid;
+  gap: 3px;
+}
+
+.alertText {
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.alertMeta {
+  font-size: 11px;
+  color: var(--mut);
+}

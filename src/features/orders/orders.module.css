@@ -1,0 +1,158 @@
+.screen {
+  display: grid;
+  gap: 14px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.hint {
+  font-size: 11.5px;
+  color: var(--mut);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+.column {
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  min-height: 150px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.column[data-over] {
+  background: var(--cream-200);
+  border-color: var(--tone);
+}
+
+.columnHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.columnDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tone);
+}
+
+.columnName {
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.columnCount {
+  font-family: var(--font-num);
+  font-size: 11.5px;
+  color: var(--mut);
+  background: var(--pnl2);
+  border-radius: var(--radius-sm);
+  padding: 2px 7px;
+}
+
+.card {
+  background: var(--pnl2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  display: grid;
+  gap: 8px;
+  cursor: grab;
+}
+
+.card:hover {
+  border-color: #067B80;
+}
+
+.card[data-dragging] {
+  opacity: 0.45;
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.grip {
+  font-size: 11px;
+  color: var(--mut);
+  letter-spacing: 2px;
+}
+
+.orderId {
+  font-family: var(--font-num);
+  font-size: 12px;
+  color: var(--txt-brand);
+}
+
+.type {
+  font-size: 10.5px;
+  color: var(--mut);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 1px 6px;
+}
+
+.items {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--mut);
+}
+
+.num {
+  font-family: var(--font-num);
+}
+
+.total {
+  font-family: var(--font-num);
+  color: var(--ink);
+}
+
+.advance {
+  cursor: pointer;
+  text-align: center;
+  font-size: 12px;
+  padding: 7px;
+  border-radius: var(--radius-sm);
+  background: var(--line);
+  color: var(--ink);
+}
+
+.advance:hover {
+  background: var(--palm);
+  color: #F7E8D3;
+}
+
+.dropHere {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-sm);
+  padding: 18px;
+  text-align: center;
+  font-size: 11.5px;
+  color: var(--mut);
+}

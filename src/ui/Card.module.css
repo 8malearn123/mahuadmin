@@ -1,0 +1,19 @@
+.card {
+  background: var(--pnl);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+}
+
+.lg {
+  padding: 18px 20px;
+}
+
+.md {
+  padding: 14px 16px;
+}
+
+.sm {
+  padding: 14px;
+}
+
