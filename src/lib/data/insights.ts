@@ -30,12 +30,11 @@ export interface BranchPerformance {
   avg: number;
   prep: string;
   pct: string;
-  tone: Tone;
 }
 
 export const BRANCH_PERFORMANCE: BranchPerformance[] = [
-  { city: 'جازان', name: 'فرع جازان — الكورنيش', sales: 4600, orders: 114, avg: 40, prep: '4:05', pct: '78%', tone: 'ok' },
-  { city: 'أبو عريش', name: 'فرع أبو عريش', sales: 2820, orders: 70, avg: 40, prep: '4:48', pct: '48%', tone: 'bad' },
+  { city: 'جازان', name: 'فرع جازان — الكورنيش', sales: 4600, orders: 114, avg: 40, prep: '4:05', pct: '78%' },
+  { city: 'أبو عريش', name: 'فرع أبو عريش', sales: 2820, orders: 70, avg: 40, prep: '4:48', pct: '48%' },
 ];
 
 export const TOP_ITEMS = [
@@ -46,11 +45,11 @@ export const TOP_ITEMS = [
   { name: 'V60 تقطير', qty: 16, sales: 288 },
 ];
 
-export const ORDER_CHANNELS: { name: string; pct: string; tone: Tone }[] = [
-  { name: 'الموقع — طلب فوري', pct: '54%', tone: 'ok' },
-  { name: 'حجز بوكسات مجدول', pct: '18%', tone: 'ok' },
-  { name: 'الكاشير في الفرع', pct: '21%', tone: 'bad' },
-  { name: 'رابط واتساب', pct: '7%', tone: 'ok' },
+export const ORDER_CHANNELS: { name: string; pct: string }[] = [
+  { name: 'الموقع — طلب فوري', pct: '54%' },
+  { name: 'حجز بوكسات مجدول', pct: '18%' },
+  { name: 'الكاشير في الفرع', pct: '21%' },
+  { name: 'رابط واتساب', pct: '7%' },
 ];
 
 export const OPERATIONAL_ALERTS: { text: string; meta: string; tone: Tone }[] = [
@@ -60,17 +59,17 @@ export const OPERATIONAL_ALERTS: { text: string; meta: string; tone: Tone }[] = 
   { text: 'رصيد قوالب واتساب المعتمدة 86%', meta: 'الإشعارات · اليوم', tone: 'ok' },
 ];
 
-export const NOTIFICATIONS: { kind: string; kindTone: Tone; text: string; phone: string; time: string; status: string; statusTone: Tone }[] = [
-  { kind: 'OTP', kindTone: 'ok', text: 'رمز تحقق عند إضافة الرقم', phone: '+9665•••0447', time: '09:02', status: 'تم التحقق', statusTone: 'ok' },
-  { kind: 'حالة', kindTone: 'ok', text: 'طلبك #4825 قيد التجهيز', phone: '+9665•••1188', time: '08:54', status: 'وصلت', statusTone: 'ok' },
-  { kind: 'حالة', kindTone: 'ok', text: 'طلبك #4827 جاهز للاستلام', phone: '+9665•••2091', time: '08:50', status: 'وصلت', statusTone: 'ok' },
-  { kind: 'بوكس', kindTone: 'bad', text: 'تذكير: تسليم بوكس ألوها غدًا 10 ص', phone: '+9665•••7734', time: '08:30', status: 'مجدولة', statusTone: 'bad' },
-  { kind: 'نقاط', kindTone: 'ok', text: 'أُضيفت 58 نقطة إلى رصيدك', phone: '+9665•••0447', time: '08:22', status: 'وصلت', statusTone: 'ok' },
-  { kind: 'OTP', kindTone: 'ok', text: 'رمز تحقق عند إضافة الرقم', phone: '+9665•••4402', time: '08:15', status: 'انتهت الصلاحية', statusTone: 'bad' },
+export const NOTIFICATIONS: { kind: string; text: string; phone: string; time: string; status: string; statusTone: Tone }[] = [
+  { kind: 'OTP', text: 'رمز تحقق عند إضافة الرقم', phone: '+9665•••0447', time: '09:02', status: 'تم التحقق', statusTone: 'ok' },
+  { kind: 'حالة', text: 'طلبك #4825 قيد التجهيز', phone: '+9665•••1188', time: '08:54', status: 'وصلت', statusTone: 'ok' },
+  { kind: 'حالة', text: 'طلبك #4827 جاهز للاستلام', phone: '+9665•••2091', time: '08:50', status: 'وصلت', statusTone: 'ok' },
+  { kind: 'بوكس', text: 'تذكير: تسليم بوكس ألوها غدًا 10 ص', phone: '+9665•••7734', time: '08:30', status: 'مجدولة', statusTone: 'bad' },
+  { kind: 'نقاط', text: 'أُضيفت 58 نقطة إلى رصيدك', phone: '+9665•••0447', time: '08:22', status: 'وصلت', statusTone: 'ok' },
+  { kind: 'OTP', text: 'رمز تحقق عند إضافة الرقم', phone: '+9665•••4402', time: '08:15', status: 'انتهت الصلاحية', statusTone: 'bad' },
 ];
 
-export const LOYALTY_TIERS: { name: string; tone: Tone; members: number; rule: string; pct: string }[] = [
-  { name: 'ألوها', tone: 'ok', members: 1480, rule: 'نقطة لكل ريال · مشروب مجاني عند 500 نقطة', pct: '63%' },
-  { name: 'كاهونا', tone: 'ok', members: 690, rule: '1.25 نقطة لكل ريال · أولوية حجز البوكسات', pct: '29%' },
-  { name: 'ماهالو', tone: 'bad', members: 170, rule: '1.5 نقطة لكل ريال · تذوّق شهري مجاني', pct: '8%' },
+export const LOYALTY_TIERS: { name: string; members: number; rule: string; pct: string }[] = [
+  { name: 'ألوها', members: 1480, rule: 'نقطة لكل ريال · مشروب مجاني عند 500 نقطة', pct: '63%' },
+  { name: 'كاهونا', members: 690, rule: '1.25 نقطة لكل ريال · أولوية حجز البوكسات', pct: '29%' },
+  { name: 'ماهالو', members: 170, rule: '1.5 نقطة لكل ريال · تذوّق شهري مجاني', pct: '8%' },
 ];

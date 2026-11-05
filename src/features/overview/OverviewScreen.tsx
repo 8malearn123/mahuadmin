@@ -1,7 +1,7 @@
 'use client';
 
 import { useDashboard } from '@/lib/store/DashboardProvider';
-import { toneColor } from '@/lib/tones';
+import { NEW_BRANCH_COLOR, branchColor, toneColor } from '@/lib/tones';
 import { Bar } from '@/ui/Bar';
 import { Card } from '@/ui/Card';
 import { Spacer } from '@/ui/Spacer';
@@ -52,7 +52,7 @@ export function OverviewScreen() {
                 <Spacer />
                 <span className={styles.branchSales}>{b.sales}</span>
               </div>
-              <Bar value={b.pct} color={toneColor(b.tone)} height={7} />
+              <Bar value={b.pct} color={b.color} height={7} />
               <div className={styles.branchMeta}>
                 <span>{b.orders} طلب</span>
                 <span>متوسط {b.avg}</span>
@@ -62,7 +62,7 @@ export function OverviewScreen() {
           ))}
           {v.newBranches.map((b) => (
             <div key={b.id} className={styles.newBranch}>
-              <span className={styles.swatch} style={{ background: 'var(--mango)' }} />
+              <span className={styles.swatch} style={{ background: NEW_BRANCH_COLOR }} />
               <span className={styles.newBranchName}>{b.name}</span>
               <Spacer />
               <span className={styles.pending}>قيد التجهيز · لا بيانات بعد</span>
@@ -71,11 +71,11 @@ export function OverviewScreen() {
           {v.showLegend && (
             <div className={styles.legend}>
               <span className={styles.legendItem}>
-                <span className={styles.swatch} style={{ background: 'var(--palm)' }} />
+                <span className={styles.swatch} style={{ background: branchColor('جازان') }} />
                 جازان
               </span>
               <span className={styles.legendItem}>
-                <span className={styles.swatch} style={{ background: 'var(--fill-bad)' }} />
+                <span className={styles.swatch} style={{ background: branchColor('أبو عريش') }} />
                 أبو عريش
               </span>
             </div>
@@ -107,7 +107,7 @@ export function OverviewScreen() {
                 <Spacer />
                 <span className={styles.channelPct}>{c.pct}</span>
               </div>
-              <Bar value={c.pct} color={toneColor(c.tone)} height={6} roundFill={false} />
+              <Bar value={c.pct} color="var(--gradient-brand-inline)" height={6} roundFill={false} />
             </div>
           ))}
         </Card>

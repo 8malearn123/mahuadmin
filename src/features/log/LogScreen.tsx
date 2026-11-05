@@ -38,7 +38,7 @@ export function LogScreen() {
       <Card pad="md" className={styles.filters}>
         <div className={styles.filterRow}>
           <SearchBox label="بحث" value={query} onChange={setQuery} placeholder="رقم الطلب أو اسم العميل أو الصنف…" />
-          <Segmented label="نوع الطلب" options={LOG_TYPE_FILTERS} value={type} onChange={setType} surface="inset" activeText="cream100" />
+          <Segmented label="نوع الطلب" options={LOG_TYPE_FILTERS} value={type} onChange={setType} surface="inset" />
           <button type="button" className={styles.clear} onClick={clear}>
             مسح
           </button>

@@ -9,7 +9,7 @@ interface AvatarProps {
   ring?: string;
 }
 
-/** Palm-teal circle with the name's first letter, as on the customer and lookup profiles. */
+/** Black (--palm) circle with the name's first letter, as on the customer and lookup profiles. */
 export function Avatar({ name, size = 34, ring }: AvatarProps) {
   return (
     <span

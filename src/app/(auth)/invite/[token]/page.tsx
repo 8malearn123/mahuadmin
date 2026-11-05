@@ -4,7 +4,6 @@ import { getAuth } from '@/lib/auth/dal';
 import { findInvite, getDb } from '@/lib/auth/store';
 import { durationText, maskPhoneIntl } from '@/lib/format';
 import { ROLES, scopeRole } from '@/lib/roles';
-import { toneColor } from '@/lib/tones';
 
 export const metadata: Metadata = { title: 'دعوة انضمام' };
 
@@ -25,7 +24,7 @@ export default async function InvitePage(props: PageProps<'/invite/[token]'>) {
       phone={maskPhoneIntl(user.phone)}
       inviter={db.users.get(invite.invitedBy)?.name ?? 'مدير النظام'}
       roleName={role.name}
-      roleTone={toneColor(role.tone)}
+      roleColor={role.color}
       scope={role.scope}
       note={role.note}
       expires={durationText(expiresIn)}

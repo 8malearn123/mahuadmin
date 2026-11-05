@@ -60,8 +60,8 @@
 }
 
 .statusTab[aria-pressed='true'] {
-  background: var(--teal-700);
-  color: var(--cream-200);
+  background: var(--fill-active);
+  color: var(--on-active);
 }
 
 .count {
@@ -184,7 +184,7 @@
 }
 
 .action:hover {
-  border-color: var(--teal-600);
+  border-color: var(--border-strong);
   color: var(--ink);
 }
 

@@ -48,8 +48,8 @@
 }
 
 .statusTab[aria-pressed='true'] {
-  background: var(--teal-700);
-  color: var(--cream-200);
+  background: var(--fill-active);
+  color: var(--on-active);
 }
 
 .count {

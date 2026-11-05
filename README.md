@@ -43,13 +43,14 @@ src/features/auth/       sign-in, sign-up, verification, recovery, invitations, 
 src/features/account/    the signed-in user's profile, contacts, preferences, password, two-step, devices
 src/features/users/      admin user management: invitations, roles and branches, suspension, sessions
 src/features/shell/      sidebar (account, admin role preview, role-filtered nav), header, role banner, session guard
-src/ui/                  shared primitives: Card, StatCard, Segmented, Button, Field, TextField, PasswordField, OtpInput, Modal, Toggle…
+src/ui/                  shared primitives: Logo, Card, StatCard, Segmented, Button, Field, TextField, PasswordField, OtpInput, Modal, Toggle…
 src/lib/auth/            auth core: store (users, sessions, codes, invitations), session cookies, data access layer, policy
 src/lib/data/            seed data (orders, boxes, menu, people, insights, org, customer portal)
 src/lib/store/           reducer + DashboardProvider (useDashboard, useUiState), SessionProvider
 src/lib/roles.ts         roles: allowed screens, branch scope, menu editing, PII level, idle lock, two-step policy
 src/lib/views.ts         screens: route, nav label, title, subtitle
 public/fonts/            Almarai and Zain (self-hosted, OFL)
+public/brand/            brand artwork from the identity book (the cover's line drawing of Jazan's mountains and sea)
 ```
 
 ## Accounts and sessions
@@ -68,7 +69,8 @@ public/fonts/            Almarai and Zain (self-hosted, OFL)
 
 - **Roles.** Each account has a role and, for branch managers and baristas, a branch; the dashboard shows only that scope. A system admin can still preview another role from the sidebar (it opens that role's first screen, as the old role switcher did) and end the preview from the banner. Screens a role can't open redirect to its landing screen.
 - **State.** Filters, searches and form drafts persist while you move between screens; everything resets on a full reload or when another account signs in. Swap `src/lib/data` and the reducer actions for API calls when a backend exists.
-- **Design tokens.** The Mahu tokens live in `src/app/globals.css`; components reference them through CSS variables. The sign-in pages use the brand's scene tokens (`--scene-*`) for the illustration in the brand panel.
+- **Visual identity.** The dashboard follows the 2026–2027 Māhū rebrand: cream paper, black, and the orange-to-red gradient, with teal kept for success states and links. The tokens live in `src/app/globals.css` and components reference them through CSS variables: selected and primary controls use `--fill-active` (black), brand emphasis and the main chart series use `--gradient-brand`, and text on the gradient is always black (cream only reads at logo size). The palette uses the colours as the identity book renders them; where the hex printed on a swatch differs (the book is CMYK), the comment next to the token gives it.
+- **Logo.** `src/ui/Logo.tsx` draws the bilingual ماهو / Māhū wordmark traced from the identity book, in `currentColor`, as the stacked or horizontal lockup. The sidebar shows it on black, the sign-in panel recreates the book's cover (logo, rule, tagline and the line drawing on the gradient), and `src/app/icon.svg` is the logo on the gradient.
 - **Fixes relative to the design export.**
   - The hourly orders chart now draws its bars. They collapsed to zero height in the export, and they now scale with the selected period.
   - Menu edits, availability and images are keyed by item id, not name or row position.

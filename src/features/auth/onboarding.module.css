@@ -13,7 +13,7 @@
   align-items: center;
   gap: 7px;
   font-size: 12px;
-  color: #274B4C;
+  color: var(--ink-700);
   white-space: nowrap;
 }
 
@@ -30,14 +30,14 @@
   place-items: center;
   font-size: 11px;
   font-family: var(--font-num);
-  background: #E4D8C6;
-  color: #274B4C;
+  background: var(--line-strong);
+  color: var(--ink-700);
   font-weight: 400;
 }
 
 .step[data-reached] .stepNumber {
-  background: #045A5E;
-  color: #FFF1DF;
+  background: var(--fill-active);
+  color: var(--on-active);
 }
 
 .stepLine {
@@ -45,11 +45,11 @@
   min-width: 12px;
   height: 2px;
   border-radius: 2px;
-  background: #E4D8C6;
+  background: var(--line-strong);
 }
 
 .stepLine[data-reached] {
-  background: #045A5E;
+  background: var(--fill-active);
 }
 
 /* ---- Step content ---- */
@@ -92,8 +92,8 @@
 
 .option[aria-checked='true'] {
   background: var(--pnl);
-  border-color: var(--teal-600);
-  box-shadow: inset 0 0 0 1px var(--teal-600);
+  border-color: var(--border-strong);
+  box-shadow: inset 0 0 0 1px var(--border-strong);
 }
 
 .optionHead {
@@ -106,13 +106,13 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  border: 1.5px solid var(--ink-300);
+  border: 1.5px solid var(--ink-500);
   box-sizing: border-box;
   flex: 0 0 auto;
 }
 
 .option[aria-checked='true'] .radio {
-  border: 4px solid var(--teal-700);
+  border: 4px solid var(--fill-active);
 }
 
 .optionTitle {

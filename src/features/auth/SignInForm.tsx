@@ -17,8 +17,8 @@ export interface DemoAccount {
   id: string;
   name: string;
   roleName: string;
-  /** Role tone colour for the dot. */
-  tone: string;
+  /** Role colour for the dot. */
+  color: string;
   identifier: string;
   password: string;
   twoStep: boolean;
@@ -117,7 +117,7 @@ export function SignInForm({ next, notice, demoAccounts }: SignInFormProps) {
             {demoAccounts.map((a) => (
               <button key={a.id} type="button" className={styles.demoAccount} onClick={() => signInAs(a)} disabled={pending}>
                 <span className={styles.demoRole}>
-                  <span className={styles.demoDot} style={{ background: a.tone }} aria-hidden="true" />
+                  <span className={styles.demoDot} style={{ background: a.color }} aria-hidden="true" />
                   {a.roleName}
                 </span>
                 <span className={styles.demoUser}>

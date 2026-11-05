@@ -4,7 +4,7 @@
   background: var(--palm);
   display: grid;
   place-items: center;
-  color: #FFF1DF;
+  color: var(--cream-100);
   font-weight: 700;
   line-height: 1;
 }

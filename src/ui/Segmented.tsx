@@ -13,8 +13,6 @@ interface SegmentedProps<T extends string> {
   size?: 'md' | 'sm';
   /** 14px instead of 13px horizontal padding. */
   wide?: boolean;
-  /** Text colour of the selected option: cream-200 or the lighter cream-100. */
-  activeText?: 'cream200' | 'cream100';
 }
 
 /** Row of mutually exclusive filter buttons on a shared track. */
@@ -26,7 +24,6 @@ export function Segmented<T extends string>({
   surface = 'card',
   size = 'sm',
   wide = false,
-  activeText = 'cream200',
 }: SegmentedProps<T>) {
   return (
     <div role="group" aria-label={label} className={cx(styles.track, surface === 'inset' && styles.inset)}>
@@ -35,7 +32,7 @@ export function Segmented<T extends string>({
           key={option}
           type="button"
           aria-pressed={option === value}
-          className={cx(styles.option, size === 'md' && styles.md, wide && styles.wide, activeText === 'cream100' && styles.paper)}
+          className={cx(styles.option, size === 'md' && styles.md, wide && styles.wide)}
           onClick={() => onChange(option)}
         >
           {option}

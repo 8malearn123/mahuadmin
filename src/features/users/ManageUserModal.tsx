@@ -38,7 +38,7 @@ export function ManageUserModal({ user, onClose }: { user: UserRow; onClose: () 
   }
 
   return (
-    <Modal eyebrow="وحدة 13 · إدارة المستخدمين" title={'إدارة حساب — ' + user.name} width={640} onClose={onClose} dotColor={toneColor(ROLES[user.role].tone)}>
+    <Modal eyebrow="وحدة 13 · إدارة المستخدمين" title={'إدارة حساب — ' + user.name} width={640} onClose={onClose} dotColor={ROLES[user.role].color}>
       <div className={styles.summary}>
         <Avatar name={user.name} size={42} />
         <div className={styles.summaryText}>

@@ -67,8 +67,8 @@
 }
 
 .accept:hover {
-  background: var(--palm);
-  color: #F7E8D3;
+  background: var(--fill-active);
+  color: var(--on-active);
 }
 
 .reject {

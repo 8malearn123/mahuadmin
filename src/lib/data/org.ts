@@ -1,8 +1,9 @@
-import type { BranchDraft, Tone } from '../types';
+import type { BranchDraft, RoleId } from '../types';
 
 export interface BranchCard {
   name: string;
-  tone: Tone;
+  /** The branch's city; picks its series colour (lib/tones.ts branchColor). */
+  city: string;
   state: string;
   orders: number;
   sales: number;
@@ -14,7 +15,7 @@ export interface BranchCard {
 export const BRANCH_CARDS: BranchCard[] = [
   {
     name: 'فرع جازان — الكورنيش',
-    tone: 'ok',
+    city: 'جازان',
     state: 'يعمل الآن',
     orders: 114,
     sales: 4600,
@@ -24,7 +25,7 @@ export const BRANCH_CARDS: BranchCard[] = [
   },
   {
     name: 'فرع أبو عريش',
-    tone: 'bad',
+    city: 'أبو عريش',
     state: 'يعمل الآن',
     orders: 70,
     sales: 2820,
@@ -51,12 +52,12 @@ export const EMPTY_BRANCH_DRAFT: BranchDraft = {
   boxes: '6',
 };
 
-export const ROLE_SUMMARIES: { name: string; tone: Tone; scope: string; perms: string }[] = [
-  { name: 'مدير النظام', tone: 'bad', scope: 'كامل المنصة', perms: 'كل الوحدات، المستخدمون والدعوات، الصلاحيات، السياسات، الفروع، سجل التدقيق.' },
-  { name: 'الإدارة العامة', tone: 'ok', scope: 'كل الفروع', perms: 'المنيو، البوكسات، العروض، التقارير، الواردات.' },
-  { name: 'مدير الفرع', tone: 'ok', scope: 'فرعه فقط', perms: 'طلبات فرعه، التوفّر، العمليات اليومية.' },
-  { name: 'الباريستا / الكاشير', tone: 'ok', scope: 'فرعه فقط', perms: 'استقبال الطلبات وتحديث حالتها وطابور التجهيز، واستعلام محدود عن العميل (اسم ونقاط فقط).' },
-  { name: 'العميل', tone: 'muted', scope: 'حسابه فقط', perms: 'الطلب، حجز البوكسات، متابعة الطلبات، النقاط.' },
+export const ROLE_SUMMARIES: { role: RoleId; name: string; scope: string; perms: string }[] = [
+  { role: 'admin', name: 'مدير النظام', scope: 'كامل المنصة', perms: 'كل الوحدات، المستخدمون والدعوات، الصلاحيات، السياسات، الفروع، سجل التدقيق.' },
+  { role: 'management', name: 'الإدارة العامة', scope: 'كل الفروع', perms: 'المنيو، البوكسات، العروض، التقارير، الواردات.' },
+  { role: 'branchManager', name: 'مدير الفرع', scope: 'فرعه فقط', perms: 'طلبات فرعه، التوفّر، العمليات اليومية.' },
+  { role: 'barista', name: 'الباريستا / الكاشير', scope: 'فرعه فقط', perms: 'استقبال الطلبات وتحديث حالتها وطابور التجهيز، واستعلام محدود عن العميل (اسم ونقاط فقط).' },
+  { role: 'customer', name: 'العميل', scope: 'حسابه فقط', perms: 'الطلب، حجز البوكسات، متابعة الطلبات، النقاط.' },
 ];
 
 export const AUDIT_LOG = [

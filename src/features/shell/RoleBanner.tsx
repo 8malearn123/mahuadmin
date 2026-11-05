@@ -2,7 +2,6 @@
 
 import { useDashboard } from '@/lib/store/DashboardProvider';
 import { activeRole } from '@/lib/store/reducer';
-import { toneColor } from '@/lib/tones';
 import { Spacer } from '@/ui/Spacer';
 import styles from './shell.module.css';
 
@@ -13,7 +12,7 @@ export function RoleBanner() {
   const previewing = state.role !== state.account.role;
   return (
     <div className={styles.bannerWrap}>
-      <div className={styles.banner} style={{ '--role': toneColor(role.tone) }}>
+      <div className={styles.banner} style={{ '--role': role.color }}>
         <span className={styles.bannerText}>
           {previewing && <strong className={styles.previewTag}>معاينة · </strong>}
           صلاحيات {role.name} — {role.note}

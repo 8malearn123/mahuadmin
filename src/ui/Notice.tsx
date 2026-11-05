@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import styles from './Notice.module.css';
 
 interface NoticeProps {
-  /** info = brand teal, ok = success, warn = attention (sandy brown), bad = error (fire opal). */
+  /** info = neutral black edge (--palm), ok = success (teal), warn = attention (sandy brown), bad = error (fire opal). */
   tone?: 'info' | 'ok' | 'warn' | 'bad';
   children: ReactNode;
 }

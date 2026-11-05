@@ -4,8 +4,8 @@ import styles from './Button.module.css';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-   * accent = sandy-brown call to action ("+ حجز جديد"),
-   * primary = teal save button (greys out while the form is incomplete),
+   * accent = brand-gradient call to action ("+ حجز جديد"),
+   * primary = black save button (greys out while the form is incomplete),
    * ghost = hairline outline (cancel, clear).
    */
   variant?: 'accent' | 'primary' | 'ghost';

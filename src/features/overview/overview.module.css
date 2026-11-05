@@ -77,8 +77,12 @@
   border-radius: 4px 4px 0 0;
 }
 
+/*
+ * Today is the primary series in the brand gradient, run from orange at the base to red at the top so
+ * the value edge is the red end (3.7:1 on the white card); yesterday is the cream comparison series.
+ */
 .barNow {
-  background: var(--teal-700);
+  background: linear-gradient(0deg, var(--brand-orange) 0%, var(--brand-red) 100%);
 }
 
 .barPrev {

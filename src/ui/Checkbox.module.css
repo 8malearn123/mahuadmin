@@ -27,7 +27,7 @@
   width: 17px;
   height: 17px;
   margin-top: 2px;
-  border: 1.5px solid var(--ink-300);
+  border: 1.5px solid var(--ink-500);
   border-radius: 4px;
   background: var(--pnl);
   display: grid;
@@ -36,15 +36,15 @@
 }
 
 .input:checked + .box {
-  background: var(--teal-700);
-  border-color: var(--teal-700);
+  background: var(--fill-active);
+  border-color: var(--fill-active);
 }
 
 .input:checked + .box::after {
   content: '';
   width: 8px;
   height: 4px;
-  border: solid var(--cream-100);
+  border: solid var(--on-active);
   border-width: 0 0 2px 2px;
   transform: translateY(-1px) rotate(-45deg);
 }

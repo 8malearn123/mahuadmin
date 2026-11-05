@@ -219,7 +219,7 @@ function SessionsCard({ sessions }: { sessions: SessionView[] }) {
               <div className={styles.sessionHead}>
                 <bdi>{s.device}</bdi>
                 {s.current && (
-                  <span className={styles.chip} style={{ '--tone': toneColor('ok') }}>
+                  <span className={styles.chip} style={{ '--tone': toneColor('ink') }}>
                     هذا الجهاز
                   </span>
                 )}

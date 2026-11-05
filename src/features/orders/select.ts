@@ -11,7 +11,7 @@ export function selectOrders(state: DashboardState) {
   const s = branchScale(state.branch) * (PERIOD_FACTORS[state.period] ?? 1);
 
   const stats: { label: string; value: string; tone: Tone }[] = [
-    { label: 'في الطابور الآن', value: String(visible.filter((o) => o.stage < 3).length), tone: 'ok' },
+    { label: 'في الطابور الآن', value: String(visible.filter((o) => o.stage < 3).length), tone: 'ink' },
     { label: 'أُنجزت اليوم', value: String(Math.round(171 * s)), tone: 'ok' },
     { label: 'متوسط الانتظار', value: '4:20 د', tone: 'ink' },
     { label: 'طلبات متأخرة', value: '1', tone: 'bad' },

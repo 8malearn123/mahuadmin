@@ -25,9 +25,9 @@
 }
 
 .tab[aria-current='page'] {
-  background: var(--teal-700);
-  border-color: var(--teal-700);
-  color: var(--cream-200);
+  background: var(--fill-active);
+  border-color: var(--border-strong);
+  color: var(--on-active);
 }
 
 .columns {
@@ -164,7 +164,7 @@
 .linkButton {
   cursor: pointer;
   font-size: 12px;
-  color: var(--txt-brand);
+  color: var(--text-brand);
   font-weight: 700;
 }
 

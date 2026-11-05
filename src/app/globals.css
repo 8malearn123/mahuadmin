@@ -1,5 +1,6 @@
 /*
- * Mahu design tokens, copied verbatim from the design system export.
+ * Mahu design tokens. Colours follow the 2026–2027 Māhū rebrand (REBRANDING.MAHU CAFE.pdf);
+ * spacing, type scale, radii and motion come from the original design system export.
  * Component styles live in CSS Modules and reference these variables.
  */
 
@@ -102,42 +103,49 @@
 }
 
 :root{
-/* --- Core brand (from the 2021 Mahu visual identity, "THE COLORS") --- */
---teal-600:#067B80;        /* TEAL      rgb(2 123 128)   cmyk 87 35 47 9 */
---fire-opal-500:#E86660;   /* FIRE OPAL rgb(232 102 96)  cmyk 4 75 59 0 */
---sandy-brown-500:#EF964A; /* SANDY BROWN rgb(239 150 74) cmyk 3 48 79 0 */
+/* --- Core brand: the Māhū rebrand 2026–2027, "Color Palette" (identity book p. 4) ---
+ * Screen values are what the identity book renders. Where the hex printed on the swatch differs
+ * (the book is CMYK), the printed value is noted. */
+--teal-600:#067B80;        /* TEAL        #067B80 · RGB 2 123 128 · CMYK 87 35 47 9 */
+--fire-opal-500:#E94C57;   /* FIRE OPAL   printed #E86660 · CMYK 4 75 59 0 */
+--sandy-brown-500:#EF8A38; /* SANDY BROWN printed #EF964A · CMYK 3 48 79 0 */
+--cream-100:#FFF3E1;       /* CREAM       #FFF3E1 · CMYK 0 11 4 0 — paper and cup stock, the brand's "white" */
+--black-900:#151412;       /* BLACK       printed #0D0D0D · CMYK 85 66 67 74 (rich black) */
 
-/* --- Illustration palette, sampled from the packaging artwork --- */
---pine-800:#0E5B55;        /* dark headland / deep shade */
---teal-400:#64ADAF;        /* ocean band */
---sand-300:#F3B07A;        /* beach band */
---sun-200:#FAD9A6;         /* low sun */
---cream-100:#FFF1DF;       /* paper / cup stock — the brand's true "white" */
---cream-200:#F7E8D3;       /* cream, one step down (dividers, insets) */
+/* --- The signature gradient: sandy brown into fire opal (cover, cups, boxes, signage) --- */
+--brand-orange:#EF8939;
+--brand-red:#E94D57;
+--brand-ember:#D9531E;     /* the gradient's midpoint, deepened to read on cream and white (categorical marks, drop targets) */
+--gradient-brand:linear-gradient(180deg,var(--brand-orange) 0%,var(--brand-red) 100%);       /* @kind color — vertical, as on the cover */
+--gradient-brand-inline:linear-gradient(to left,var(--brand-orange) 0%,var(--brand-red) 100%); /* @kind color — along the RTL reading direction: orange at the start (right) */
 
-/* --- Neutrals: warm, never pure grey --- */
---ink-900:#123033;
---ink-700:#274B4C;
---ink-500:#5C7476;
---ink-300:#9CAFAF;
---ink-100:#D9E0DB;
+/* --- Neutrals: warm, drawn from the brand black, never pure grey --- */
+--ink-900:#151412;
+--ink-700:#3B3631;
+--ink-500:#6B635B;
+--ink-300:#A39A90;
+--ink-100:#E3D9CB;
 --white:#FFFFFF;
+--cream-200:#F7E8D3;       /* cream, one step down (dividers, insets) */
+--black-800:#24211E;       /* raised surface on black (sidebar insets, hovers) */
+--black-700:#34302B;
 
 /* --- Tints & shades used for states --- */
 --teal-700:#045A5E;
 --teal-500:#0A9296;
 --teal-050:#E3F0EF;
---fire-opal-600:#D2514B;
---fire-opal-050:#FBE4E2;
---sandy-brown-600:#D97F34;
---sandy-brown-050:#FDEEDC;
+--fire-opal-600:#D33B47;
+--fire-opal-050:#FCE4E2;
+--sandy-brown-600:#D9731F;
+--sandy-brown-050:#FDEBD8;
 
 /* --- Semantic aliases --- */
 --surface-page:var(--cream-100);
 --surface-card:var(--white);
 --surface-inset:var(--cream-200);
---surface-brand:var(--teal-600);
---surface-brand-deep:var(--pine-800);
+--surface-brand:var(--black-900);        /* dark brand surface: sidebar (the logo on black, book p. 5) */
+--surface-brand-raised:var(--black-800);
+--surface-gradient:var(--gradient-brand); /* hero surface: sign-in brand panel */
 --surface-accent:var(--sandy-brown-500);
 --surface-hot:var(--fire-opal-500);
 
@@ -146,27 +154,24 @@
 --text-subtle:var(--ink-300);
 --text-on-brand:var(--cream-100);
 --text-on-accent:var(--ink-900);
---text-brand:var(--teal-600);
---text-price:var(--teal-600);
+--text-on-gradient:var(--ink-900);       /* only black reads on the gradient (7.3:1 orange, 5:1 red); cream is for the logo and artwork */
+--text-brand:var(--teal-700);            /* links */
+--text-price:var(--ink-900);
 
---border-hairline:rgba(18,48,51,.12);
---border-strong:var(--teal-600);
---border-inset:rgba(18,48,51,.06);
+--border-hairline:rgba(21,20,18,.12);
+--border-strong:var(--ink-900);
+--border-inset:rgba(21,20,18,.06);
 
---focus-ring:var(--sandy-brown-500);
+--focus-ring:var(--ink-900);            /* black: an orange-red ring would read as an error; the sidebar uses orange */
+
+/* Selected and primary controls (active tab, primary button, checked box, current step): black like the logo */
+--fill-active:var(--black-900);
+--on-active:var(--cream-100);
 
 --state-success:var(--teal-600);
 --state-warning:var(--sandy-brown-500);
 --state-error:var(--fire-opal-500);
---state-info:var(--teal-400);
-
-/* --- Illustration band order (top -> bottom), the brand's signature scene --- */
---scene-sky:var(--cream-100);
---scene-sun:var(--sun-200);
---scene-hills:var(--fire-opal-500);
---scene-headland:var(--pine-800);
---scene-sea:var(--teal-400);
---scene-beach:var(--sand-300);
+--state-info:var(--teal-600);
 }
 
 :root{
@@ -231,12 +236,12 @@
 :root{
 /* Warm, low, single-direction shadows — the identity is flat print, so use them sparingly */
 --shadow-0:none;
---shadow-1:0 1px 2px rgba(18,48,51,.06);
---shadow-2:0 4px 14px rgba(18,48,51,.08);
---shadow-3:0 12px 32px rgba(18,48,51,.12);
---shadow-inset:inset 0 0 0 1px rgba(18,48,51,.08);
---overlay-scrim:rgba(18,48,51,.5); /* @kind color */
---protection-gradient:linear-gradient(180deg,rgba(18,48,51,0) 0%,rgba(18,48,51,.55) 100%); /* @kind color */
+--shadow-1:0 1px 2px rgba(21,20,18,.06);
+--shadow-2:0 4px 14px rgba(21,20,18,.08);
+--shadow-3:0 12px 32px rgba(21,20,18,.14);
+--shadow-inset:inset 0 0 0 1px rgba(21,20,18,.08);
+--overlay-scrim:rgba(21,20,18,.55); /* @kind color */
+--protection-gradient:linear-gradient(180deg,rgba(21,20,18,0) 0%,rgba(21,20,18,.55) 100%); /* @kind color */
 }
 
 :root{
@@ -253,7 +258,7 @@
 /* --- Dashboard additions --- */
 :root{
 --line-strong:#E4D8C6;  /* idle drop-zone borders, disabled save buttons */
---refund:#C6453F;       /* refunded orders in the log */
+--refund:#B3313B;       /* refunded orders in the log */
 --font-ar:Almarai,sans-serif;
 --font-num:Zain,sans-serif;
 /* Neither face is loaded, so this renders in the system monospace (same as the export). */
@@ -261,9 +266,9 @@
 }
 
 /* Dashboard aliases. The sidebar re-points several of these for its dark surface. */
-body{margin:0;direction:rtl;background:var(--surface-page);font-family:var(--font-ar);--bg:var(--surface-page);--pnl:var(--surface-card);--pnl2:var(--surface-inset);--line:var(--border-hairline);--txt-brand:var(--teal-700);--txt-off:var(--ink-700);--on-accent:var(--text-on-accent);--ink:var(--text-body);--mut:var(--ink-700);--palm:var(--teal-600);--coral:var(--fire-opal-500);--mango:var(--sandy-brown-500);--ok:var(--teal-700);--fill-ok:var(--teal-600);--fill-warn:var(--sandy-brown-500);--fill-bad:var(--fire-opal-500);
-/* darkened text grades — the system ships no readable text shade for sandy brown / fire opal */
---txt-warn:#8A4A12;--warn:#8A4A12;--bad:#A33A34}
+body{margin:0;direction:rtl;background:var(--surface-page);font-family:var(--font-ar);--bg:var(--surface-page);--pnl:var(--surface-card);--pnl2:var(--surface-inset);--line:var(--border-hairline);--txt-brand:var(--ink-900);--txt-off:var(--ink-700);--on-accent:var(--text-on-accent);--ink:var(--text-body);--mut:var(--ink-700);--palm:var(--black-900);--coral:var(--fire-opal-500);--mango:var(--sandy-brown-500);--ok:var(--teal-700);--fill-ok:var(--teal-600);--fill-warn:var(--sandy-brown-500);--fill-bad:var(--fire-opal-500);
+/* darkened text grades — the palette ships no readable text shade for sandy brown / fire opal */
+--txt-warn:#8A4A12;--warn:#8A4A12;--bad:#B3313B}
 
 /* Every control in the design starts from all:unset. Layered so module classes always win. */
 @layer reset {
@@ -274,7 +279,7 @@ body{margin:0;direction:rtl;background:var(--surface-page);font-family:var(--fon
 
 @layer base {
   a { color: var(--text-brand); }
-  a:hover { color: var(--teal-700); }
+  a:hover { color: var(--ink-900); }
 
   /* all:unset strips the browser focus ring; restore one for keyboard users only. */
   :where(button, a, select, [role="switch"], [tabindex]):focus-visible {

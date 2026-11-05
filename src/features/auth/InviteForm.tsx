@@ -22,7 +22,7 @@ interface InviteFormProps {
   phone: string;
   inviter: string;
   roleName: string;
-  roleTone: string;
+  roleColor: string;
   scope: string;
   note: string;
   expires: string;
@@ -30,7 +30,7 @@ interface InviteFormProps {
   signedInAs: string | null;
 }
 
-export function InviteForm({ token, name: invitedName, phone, inviter, roleName, roleTone, scope, note, expires, signedInAs }: InviteFormProps) {
+export function InviteForm({ token, name: invitedName, phone, inviter, roleName, roleColor, scope, note, expires, signedInAs }: InviteFormProps) {
   const [state, formAction, pending] = useActionState(acceptInvite.bind(null, token), {} as FormState<Field>);
   const [name, setName] = useState(invitedName);
   const [password, setPassword] = useState('');
@@ -44,7 +44,7 @@ export function InviteForm({ token, name: invitedName, phone, inviter, roleName,
       title="انضم إلى فريق ماهو"
       subtitle={`وصلتك دعوة من ${inviter} لإنشاء حسابك في منصة ماهو. تنتهي الدعوة خلال ${expires}.`}
     >
-      <div className={onboarding.roleCard} style={{ '--tone': roleTone }}>
+      <div className={onboarding.roleCard} style={{ '--tone': roleColor }}>
         <div className={onboarding.roleHead}>
           <span className={onboarding.roleDot} aria-hidden="true" />
           <span className={onboarding.roleName}>{roleName}</span>

@@ -5,7 +5,7 @@ import { sar } from '@/lib/format';
 import { BRANCH_CARDS, EMPTY_BRANCH_DRAFT } from '@/lib/data/org';
 import { useDashboard, useUiState } from '@/lib/store/DashboardProvider';
 import { activeRole } from '@/lib/store/reducer';
-import { toneColor } from '@/lib/tones';
+import { NEW_BRANCH_COLOR, branchColor, toneColor } from '@/lib/tones';
 import { Button } from '@/ui/Button';
 import { Card } from '@/ui/Card';
 import { Spacer } from '@/ui/Spacer';
@@ -45,7 +45,7 @@ export function BranchesScreen() {
         {BRANCH_CARDS.map((b) => (
           <Card key={b.name} pad="none" className={styles.card}>
             <div className={styles.cardHead}>
-              <span className={styles.swatch} style={{ background: toneColor(b.tone) }} />
+              <span className={styles.swatch} style={{ background: branchColor(b.city) }} />
               <h2 className={styles.name}>{b.name}</h2>
               <Spacer />
               <span className={styles.state} style={{ color: toneColor('ok') }}>
@@ -80,7 +80,7 @@ export function BranchesScreen() {
         {state.branchesAdded.map((b) => (
           <section key={b.id} className={styles.newCard}>
             <div className={styles.cardHead}>
-              <span className={styles.swatch} style={{ background: 'var(--mango)' }} />
+              <span className={styles.swatch} style={{ background: NEW_BRANCH_COLOR }} />
               <h2 className={styles.name}>{b.name}</h2>
               <Spacer />
               <span className={styles.state} style={{ color: 'var(--warn)' }}>

@@ -15,7 +15,7 @@ export const ROLES: Record<RoleId, RoleDef> = {
   admin: {
     name: 'مدير النظام',
     scope: 'كامل المنصة',
-    tone: 'bad',
+    color: 'var(--ink-900)',
     views: ['overview', 'orders', 'log', 'menu', 'loyalty', 'inbound', 'customer', 'lookup', 'boxes', 'branches', 'users', 'roles'],
     branches: [ALL_BRANCHES, 'جازان', 'أبو عريش'],
     perBranch: false,
@@ -28,7 +28,7 @@ export const ROLES: Record<RoleId, RoleDef> = {
   management: {
     name: 'الإدارة العامة',
     scope: 'كل الفروع',
-    tone: 'ok',
+    color: 'var(--brand-ember)',
     views: ['overview', 'orders', 'log', 'menu', 'loyalty', 'inbound', 'lookup', 'boxes', 'branches'],
     branches: [ALL_BRANCHES, 'جازان', 'أبو عريش'],
     perBranch: false,
@@ -41,7 +41,7 @@ export const ROLES: Record<RoleId, RoleDef> = {
   branchManager: {
     name: 'مدير الفرع',
     scope: 'فرع جازان فقط',
-    tone: 'ok',
+    color: 'var(--sandy-brown-500)',
     views: ['overview', 'orders', 'log', 'menu', 'lookup', 'boxes'],
     branches: ['جازان'],
     perBranch: true,
@@ -54,7 +54,7 @@ export const ROLES: Record<RoleId, RoleDef> = {
   barista: {
     name: 'الباريستا / الكاشير',
     scope: 'فرع جازان فقط',
-    tone: 'ok',
+    color: 'var(--ink-500)',
     views: ['orders', 'log', 'lookup', 'boxes'],
     branches: ['جازان'],
     perBranch: true,
@@ -68,7 +68,7 @@ export const ROLES: Record<RoleId, RoleDef> = {
   customer: {
     name: 'العميل',
     scope: 'حسابه فقط',
-    tone: 'muted',
+    color: 'var(--ink-300)',
     views: ['customer'],
     branches: ['جازان'],
     perBranch: false,

@@ -29,10 +29,6 @@
 }
 
 .option[aria-pressed='true'] {
-  background: var(--teal-700);
-  color: var(--cream-200);
-}
-
-.paper[aria-pressed='true'] {
-  color: var(--cream-100);
+  background: var(--fill-active);
+  color: var(--on-active);
 }

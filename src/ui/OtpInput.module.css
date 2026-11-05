@@ -38,7 +38,7 @@
 }
 
 .cell[data-active] {
-  border-color: var(--teal-600);
+  border-color: var(--ink-900);
   box-shadow: 0 0 0 2px var(--focus-ring);
 }
 

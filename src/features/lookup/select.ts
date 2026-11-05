@@ -12,13 +12,15 @@ function shownPhone(phone: string, pii: PiiLevel): string {
   return '— محجوب —';
 }
 
+// Tiers are loyalty levels, not statuses: no ok-teal or bad-red. The top tier reads in black, the others muted.
 function tierTone(tier: Customer['tier']): Tone {
-  return tier === 'ماهالو' ? 'bad' : 'ok';
+  return tier === 'ماهالو' ? 'ink' : 'muted';
 }
 
 function historyTone(status: LogStatus): Tone {
   if (status === 'تم التسليم') return 'muted';
   if (status === 'ملغي') return 'bad';
+  if (status === 'مسترجع') return 'refund';
   return 'ok';
 }
 
