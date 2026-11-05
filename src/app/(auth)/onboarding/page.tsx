@@ -6,7 +6,6 @@ import { BRANCH_INFO } from '@/lib/data/org';
 import { CUSTOMERS } from '@/lib/data/people';
 import { firstName } from '@/lib/format';
 import { OPERATING_BRANCHES, ROLES, scopeRole } from '@/lib/roles';
-import { toneColor } from '@/lib/tones';
 import { VIEWS } from '@/lib/views';
 
 export const metadata: Metadata = { title: 'إعداد الحساب' };
@@ -39,7 +38,7 @@ export default async function OnboardingPage() {
     setup = {
       audience: 'staff',
       firstName: firstName(user.name),
-      role: { name: role.name, scope: role.scope, note: role.note, tone: toneColor(role.tone) },
+      role: { name: role.name, scope: role.scope, note: role.note, color: role.color },
       screens: role.views.map((v) => VIEWS[v].label),
       twoStepRequired: role.twoStep === 'required',
       twoStep: user.twoStep,

@@ -45,13 +45,13 @@
   padding: 7px 15px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--line);
-  background: #FFFFFF;
-  color: #274B4C;
+  background: var(--white);
+  color: var(--ink-700);
 }
 
 .category[aria-pressed='true'] {
-  background: #045A5E;
-  color: #FFF1DF;
+  background: var(--fill-active);
+  color: var(--on-active);
 }
 
 .categoryCount {
@@ -134,15 +134,15 @@
   font-size: 12px;
   padding: 7px 12px;
   border-radius: var(--radius-sm);
-  border: 1px solid #E4D8C6;
-  background: #F7E8D3;
-  color: #274B4C;
+  border: 1px solid var(--line-strong);
+  background: var(--cream-200);
+  color: var(--ink-700);
 }
 
 .chip[aria-pressed='true'] {
-  border-color: #067B80;
-  background: #045A5E;
-  color: #FFF1DF;
+  border-color: var(--border-strong);
+  background: var(--fill-active);
+  color: var(--on-active);
 }
 
 .chipMark {
@@ -297,8 +297,8 @@
   padding: 11px 18px;
   border-radius: var(--radius-sm);
   font-weight: 600;
-  background: var(--teal-700);
-  color: var(--cream-200);
+  background: var(--fill-active);
+  color: var(--on-active);
 }
 
 .addonSave[aria-disabled='true'] {

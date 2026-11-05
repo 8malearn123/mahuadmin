@@ -64,12 +64,12 @@
 }
 
 .slot[data-over] .frame {
-  outline: 2px solid #c96442;
+  outline: 2px solid var(--brand-ember);
   outline-offset: -2px;
-  background: rgba(201, 100, 66, 0.1);
+  background: rgba(217, 83, 30, 0.1);
 }
 
 .slot[data-over] .ring {
-  border-color: #c96442;
+  border-color: var(--brand-ember);
   opacity: 1;
 }

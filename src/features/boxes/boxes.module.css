@@ -42,7 +42,7 @@
 
 .day {
   cursor: pointer;
-  background: #FFFFFF;
+  background: var(--white);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-1);
@@ -52,8 +52,8 @@
 }
 
 .day[aria-pressed='true'] {
-  background: #F7E8D3;
-  border-color: #067B80;
+  background: var(--cream-200);
+  border-color: var(--border-strong);
 }
 
 .dayHead {
@@ -64,11 +64,11 @@
 .dayLabel {
   font-size: 12.5px;
   font-weight: 600;
-  color: #274B4C;
+  color: var(--ink-700);
 }
 
 .day[aria-pressed='true'] .dayLabel {
-  color: #123033;
+  color: var(--ink-900);
 }
 
 .dayDate {
@@ -244,8 +244,8 @@
 }
 
 .advance:hover {
-  background: var(--palm);
-  color: #F7E8D3;
+  background: var(--fill-active);
+  color: var(--on-active);
 }
 
 .cancel {

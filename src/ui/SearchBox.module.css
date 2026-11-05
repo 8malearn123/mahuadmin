@@ -25,3 +25,8 @@
   font-size: 13px;
   color: var(--ink);
 }
+
+.input::placeholder {
+  color: var(--ink-500);
+  opacity: 1;
+}

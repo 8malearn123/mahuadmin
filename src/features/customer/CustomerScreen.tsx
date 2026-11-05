@@ -26,7 +26,7 @@ export function CustomerScreen({ portal }: { portal: Portal }) {
             <Spacer />
             <span className={styles.pointsValue}>{portal.points}</span>
           </div>
-          <Bar value={portal.pct} color="var(--mango)" height={6} track="line" roundFill={false} />
+          <Bar value={portal.pct} color="var(--gradient-brand-inline)" height={6} track="line" roundFill={false} />
           <span className={styles.small}>{portal.toNext} نقطة تفصلك عن مشروب مجاني</span>
         </div>
         <div className={styles.current}>

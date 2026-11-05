@@ -38,7 +38,6 @@ export function ProductModal({ editing, draft, onChange, addons, onSave, onClose
     <Modal
       eyebrow="وحدة 03 · المنيو والتصنيفات والإضافات"
       title={editing ? 'تعديل الصنف — ' + editing.name : 'إضافة منتج جديد'}
-      dotColor="#067B80"
       closeHover
       onClose={onClose}
     >

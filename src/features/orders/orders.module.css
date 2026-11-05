@@ -36,7 +36,7 @@
 
 .column[data-over] {
   background: var(--cream-200);
-  border-color: var(--tone);
+  border-color: var(--border-strong);
 }
 
 .columnHead {
@@ -77,7 +77,7 @@
 }
 
 .card:hover {
-  border-color: #067B80;
+  border-color: var(--border-strong);
 }
 
 .card[data-dragging] {
@@ -144,8 +144,8 @@
 }
 
 .advance:hover {
-  background: var(--palm);
-  color: #F7E8D3;
+  background: var(--fill-active);
+  color: var(--on-active);
 }
 
 .dropHere {

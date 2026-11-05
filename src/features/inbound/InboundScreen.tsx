@@ -4,7 +4,7 @@ import { sar } from '@/lib/format';
 import { FRANCHISE_LEADS, JOB_APPLICATIONS } from '@/lib/data/people';
 import { useDashboard } from '@/lib/store/DashboardProvider';
 import { toneColor } from '@/lib/tones';
-import type { JobState } from '@/lib/types';
+import type { JobState, Tone } from '@/lib/types';
 import { Bar } from '@/ui/Bar';
 import { Card } from '@/ui/Card';
 import { Spacer } from '@/ui/Spacer';
@@ -16,6 +16,9 @@ const JOB_STATE_COLORS: Record<JobState, string> = {
   'مقبول للمقابلة': toneColor('ok'),
   'مستبعد': toneColor('bad'),
 };
+
+// Readiness bars are status fills (teal = ready, red = not yet); toneColor gives the text shades.
+const SCORE_FILLS: Partial<Record<Tone, string>> = { ok: 'var(--fill-ok)', bad: 'var(--fill-bad)' };
 
 export function InboundScreen() {
   const { state, dispatch } = useDashboard();
@@ -61,7 +64,7 @@ export function InboundScreen() {
             <span className={styles.meta}>
               {f.city} · {f.meta}
             </span>
-            <Bar value={f.score} color={toneColor(f.tone)} height={6} track="line" roundFill={false} />
+            <Bar value={f.score} color={SCORE_FILLS[f.tone] ?? toneColor(f.tone)} height={6} track="line" roundFill={false} />
             <span className={styles.score}>جاهزية الملف {f.score}</span>
           </div>
         ))}

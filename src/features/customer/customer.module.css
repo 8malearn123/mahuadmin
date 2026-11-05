@@ -56,7 +56,7 @@
   display: grid;
   place-items: center;
   font-size: 13px;
-  color: #FFF1DF;
+  color: var(--cream-100);
   font-weight: 700;
 }
 
@@ -153,22 +153,22 @@
   place-items: center;
   font-size: 10px;
   font-family: var(--font-num);
-  background: #E4D8C6;
-  color: #274B4C;
+  background: var(--line-strong);
+  color: var(--ink-700);
 }
 
 .step[data-reached] .stepNumber {
-  background: #045A5E;
-  color: #FFF1DF;
+  background: var(--fill-active);
+  color: var(--on-active);
 }
 
 .stepLabel {
   font-size: 12.5px;
-  color: #274B4C;
+  color: var(--ink-700);
 }
 
 .step[data-reached] .stepLabel {
-  color: #123033;
+  color: var(--ink-900);
 }
 
 .stepTime {
@@ -219,7 +219,7 @@
 .box {
   background: var(--pnl2);
   border: 1px solid var(--line);
-  border-right: 3px solid #045A5E;
+  border-right: 3px solid var(--palm);
   border-radius: var(--radius-sm);
   padding: 12px 14px;
   display: flex;

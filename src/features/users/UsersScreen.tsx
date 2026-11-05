@@ -71,7 +71,7 @@ export function UsersScreen({ users }: { users: UserRow[] }) {
       <Card pad="md" className={styles.filters}>
         <div className={styles.filterRow}>
           <SearchBox label="بحث" value={query} onChange={setQuery} placeholder="الاسم أو الجوال أو البريد…" />
-          <Segmented label="نوع الحساب" options={AUDIENCE_FILTERS} value={audience} onChange={setAudience} surface="inset" activeText="cream100" />
+          <Segmented label="نوع الحساب" options={AUDIENCE_FILTERS} value={audience} onChange={setAudience} surface="inset" />
         </div>
         <div className={styles.statusRow}>
           {STATUS_FILTERS.map((s) => (
@@ -117,7 +117,7 @@ export function UsersScreen({ users }: { users: UserRow[] }) {
               </div>
               <div className={styles.cell}>
                 <span className={styles.roleLine}>
-                  <span className={styles.dot} style={{ background: toneColor(role.tone) }} aria-hidden="true" />
+                  <span className={styles.dot} style={{ background: role.color }} aria-hidden="true" />
                   {role.name}
                 </span>
                 <span className={styles.small}>{u.scope}</span>

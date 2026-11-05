@@ -29,7 +29,11 @@ export type Tone = 'ok' | 'bad' | 'muted' | 'ink' | 'brand' | 'refund';
 export interface RoleDef {
   name: string;
   scope: string;
-  tone: Tone;
+  /**
+   * The role's identifying colour (dots, the role banner edge, role cards). Roles are categories,
+   * so they use the palette's neutrals and oranges, never the success teal or error red.
+   */
+  color: string;
   /** Screens the role can open; the first one is its landing screen. */
   views: ViewId[];
   /**

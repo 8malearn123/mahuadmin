@@ -11,7 +11,7 @@
   width: 30px;
   height: 17px;
   border-radius: 99px;
-  background: var(--tone);
+  background: var(--ink-500);
   display: flex;
   align-items: center;
   padding: 2px;
@@ -20,12 +20,13 @@
 
 .toggle[aria-checked='true'] .track {
   justify-content: flex-end;
+  background: var(--fill-active);
 }
 
 .knob {
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: #FFF1DF;
+  background: var(--on-active);
   display: block;
 }

@@ -76,7 +76,7 @@ export function LookupScreen() {
 
         {sel && (
           <div className={styles.detail}>
-            <section className={styles.profile} style={{ borderColor: toneColor(sel.tierTone) }}>
+            <section className={styles.profile}>
               <div className={styles.profileHead}>
                 <span className={styles.avatar}>{sel.initial}</span>
                 <div className={styles.identity}>
@@ -97,7 +97,7 @@ export function LookupScreen() {
                   <Spacer />
                   <span className={styles.pointsValue}>{sel.points}</span>
                 </div>
-                <Bar value={sel.pct} color="var(--mango)" height={6} roundFill={false} />
+                <Bar value={sel.pct} color="var(--gradient-brand-inline)" height={6} roundFill={false} />
                 <span className={styles.small}>{sel.toNext} نقطة تفصله عن مشروب مجاني</span>
               </div>
               <div className={styles.facts}>

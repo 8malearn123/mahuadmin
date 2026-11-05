@@ -12,7 +12,7 @@
 }
 
 .paper {
-  background: #FFF1DF;
+  background: var(--cream-100);
 }
 
 .fill {

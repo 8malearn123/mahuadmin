@@ -10,7 +10,10 @@ interface ToggleProps {
   name?: string;
 }
 
-/** Availability switch: teal with the knob to the left when on, dark ink when off. */
+/**
+ * Availability switch: a black track with the knob to the left when on (like every selected control),
+ * a grey track when off. The label keeps its status colour: success teal when on, muted when off.
+ */
 export function Toggle({ on, onToggle, label, name }: ToggleProps) {
   return (
     <button

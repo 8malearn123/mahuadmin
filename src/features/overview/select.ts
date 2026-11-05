@@ -11,6 +11,7 @@ import {
 } from '@/lib/data/insights';
 import { ALL_BRANCHES, matchesBranch } from '@/lib/roles';
 import type { DashboardState } from '@/lib/store/reducer';
+import { branchColor } from '@/lib/tones';
 import type { Tone } from '@/lib/types';
 
 export function selectOverview(state: DashboardState) {
@@ -53,7 +54,7 @@ export function selectOverview(state: DashboardState) {
       avg: sar(b.avg),
       prep: b.prep + ' د',
       pct: b.pct,
-      tone: b.tone,
+      color: branchColor(b.city),
     })),
     newBranches: state.branchesAdded.filter((b) => matchesBranch(state.branch, b.city)),
     showLegend: state.branch === ALL_BRANCHES,

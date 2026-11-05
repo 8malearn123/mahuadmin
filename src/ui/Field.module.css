@@ -16,6 +16,11 @@
   padding: 10px 12px;
 }
 
+.control::placeholder {
+  color: var(--ink-500);
+  opacity: 1;
+}
+
 .control:focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 1px;
@@ -43,8 +48,8 @@
 }
 
 .select option {
-  background: #FFFFFF;
-  color: #123033;
+  background: var(--white);
+  color: var(--ink-900);
 }
 
 .textarea {

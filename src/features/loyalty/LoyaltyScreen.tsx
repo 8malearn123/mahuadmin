@@ -34,7 +34,7 @@ export function LoyaltyScreen() {
           </div>
           {NOTIFICATIONS.map((n) => (
             <div key={n.time + n.phone} className={styles.notification}>
-              <span className={styles.kind} style={{ color: toneColor(n.kindTone) }}>
+              <span className={styles.kind} style={{ color: toneColor('ink') }}>
                 {n.kind}
               </span>
               <span className={styles.text}>{n.text}</span>
@@ -51,13 +51,13 @@ export function LoyaltyScreen() {
           {LOYALTY_TIERS.map((t) => (
             <div key={t.name} className={styles.tier}>
               <div className={styles.tierHead}>
-                <span className={styles.swatch} style={{ background: toneColor(t.tone) }} />
+                <span className={styles.swatch} style={{ background: 'var(--gradient-brand-inline)' }} />
                 <span className={styles.tierName}>{t.name}</span>
                 <Spacer />
                 <span className={styles.members}>{t.members} عضو</span>
               </div>
               <span className={styles.rule}>{t.rule}</span>
-              <Bar value={t.pct} color={toneColor(t.tone)} height={6} track="line" roundFill={false} />
+              <Bar value={t.pct} color="var(--gradient-brand-inline)" height={6} track="line" roundFill={false} />
             </div>
           ))}
           <div className={styles.footnote}>

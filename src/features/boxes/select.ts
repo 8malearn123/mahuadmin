@@ -55,8 +55,8 @@ export function selectBoxes(state: DashboardState, selectedDay: number) {
     kpis: [
       { label: 'حجوزات قادمة', value: String(live.filter((b) => b.status !== 'تم التسليم').length), note: 'خلال 7 أيام', tone: 'ink' as Tone },
       { label: 'بانتظار الدفع', value: String(live.filter((b) => b.pay === 'غير مدفوع').length), note: 'تحتاج متابعة', tone: 'bad' as Tone },
-      { label: 'تُجهَّز اليوم', value: String(qtySum(live.filter((b) => b.day === 0))), note: 'بوكس', tone: 'ok' as Tone },
-      { label: 'إيراد البوكسات', value: sar(live.reduce((acc, b) => acc + (PRICE[b.box] ?? 0) * b.qty, 0)), note: 'الأسبوع الحالي', tone: 'ok' as Tone },
+      { label: 'تُجهَّز اليوم', value: String(qtySum(live.filter((b) => b.day === 0))), note: 'بوكس', tone: 'ink' as Tone },
+      { label: 'إيراد البوكسات', value: sar(live.reduce((acc, b) => acc + (PRICE[b.box] ?? 0) * b.qty, 0)), note: 'الأسبوع الحالي', tone: 'ink' as Tone },
     ],
     weekDays,
     day: {

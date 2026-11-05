@@ -37,7 +37,6 @@ export function Header({ view }: { view: ViewId }) {
           value={state.period}
           onChange={(period) => dispatch({ type: 'setPeriod', period })}
           size="md"
-          activeText="cream100"
         />
       )}
     </header>

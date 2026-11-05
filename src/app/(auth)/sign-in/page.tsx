@@ -7,7 +7,6 @@ import { DEMO_ACCOUNT_IDS, DEMO_PASSWORD, getDb } from '@/lib/auth/store';
 import type { SignOutReason } from '@/lib/auth/types';
 import { safeNext } from '@/lib/auth/validation';
 import { ROLES } from '@/lib/roles';
-import { toneColor } from '@/lib/tones';
 
 export const metadata: Metadata = { title: 'تسجيل الدخول' };
 
@@ -24,7 +23,7 @@ export default async function SignInPage(props: PageProps<'/sign-in'>) {
         const u = db.users.get(id);
         if (!u) return [];
         const role = ROLES[u.role];
-        return [{ id: u.id, name: u.name, roleName: role.name, tone: toneColor(role.tone), identifier: u.phone, password: DEMO_PASSWORD, twoStep: u.twoStep }];
+        return [{ id: u.id, name: u.name, roleName: role.name, color: role.color, identifier: u.phone, password: DEMO_PASSWORD, twoStep: u.twoStep }];
       })
     : null;
 

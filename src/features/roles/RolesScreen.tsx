@@ -1,5 +1,5 @@
 import { AUDIT_LOG, ROLE_SUMMARIES, SECURITY_CONTROLS } from '@/lib/data/org';
-import { toneColor } from '@/lib/tones';
+import { ROLES } from '@/lib/roles';
 import { Card } from '@/ui/Card';
 import styles from './roles.module.css';
 
@@ -24,7 +24,7 @@ export function RolesScreen({ events }: { events: AuditEvent[] }) {
         {ROLE_SUMMARIES.map((r) => (
           <div key={r.name} className={styles.row}>
             <div className={styles.roleName}>
-              <span className={styles.dot} style={{ background: toneColor(r.tone) }} />
+              <span className={styles.dot} style={{ background: ROLES[r.role].color }} />
               <span className={styles.name}>{r.name}</span>
             </div>
             <span className={styles.scope}>{r.scope}</span>

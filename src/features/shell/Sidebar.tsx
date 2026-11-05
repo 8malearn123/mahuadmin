@@ -9,10 +9,10 @@ import { ROLE_IDS, ROLES, scopeRole } from '@/lib/roles';
 import { useDashboard } from '@/lib/store/DashboardProvider';
 import { activeRole } from '@/lib/store/reducer';
 import { useSessionUser } from '@/lib/store/SessionProvider';
-import { toneColor } from '@/lib/tones';
 import type { RoleId, ViewId } from '@/lib/types';
 import { NAV_GROUPS, PINNED_VIEW, VIEWS } from '@/lib/views';
 import { cx } from '@/ui/cx';
+import { Logo } from '@/ui/Logo';
 import { useSessionControls } from './SessionGuard';
 import styles from './shell.module.css';
 
@@ -43,9 +43,9 @@ export function Sidebar({ view }: { view: ViewId | null }) {
   }
 
   return (
-    <aside className={styles.sidebar} style={{ '--role': toneColor(role.tone) }}>
+    <aside className={styles.sidebar}>
       <div className={styles.brand}>
-        <span className={styles.logo}>ماهو</span>
+        <Logo className={styles.logo} title="" />
         <div className={styles.brandText}>
           <span className={styles.brandName}>منصة ماهو</span>
           <span className={styles.brandMeta}>KUD-2061 · الإصدار 1.0</span>

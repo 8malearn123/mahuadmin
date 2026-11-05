@@ -13,19 +13,30 @@
   padding: 9px 22px;
 }
 
+/* The signature gradient, as on the cups and boxes; black text is the only colour that reads on it. */
 .accent {
-  background: var(--mango);
+  background: var(--gradient-brand-inline);
   color: var(--on-accent);
   font-weight: 600;
 }
 
-.primary {
-  font-weight: 600;
-  background: var(--teal-700);
-  color: var(--cream-200);
+.accent:hover {
+  box-shadow: inset 0 0 0 100vmax rgba(21, 20, 18, 0.06);
 }
 
-.primary[aria-disabled='true'] {
+.primary {
+  font-weight: 600;
+  background: var(--fill-active);
+  color: var(--on-active);
+  transition: background var(--dur-fast) var(--ease-standard);
+}
+
+.primary:hover {
+  background: var(--black-700);
+}
+
+.primary[aria-disabled='true'],
+.primary[aria-disabled='true']:hover {
   background: var(--line-strong);
   color: var(--ink-700);
 }

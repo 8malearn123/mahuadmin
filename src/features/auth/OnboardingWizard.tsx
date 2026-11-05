@@ -27,7 +27,7 @@ interface CustomerSetup {
 interface StaffSetup {
   audience: 'staff';
   firstName: string;
-  role: { name: string; scope: string; note: string; tone: string };
+  role: { name: string; scope: string; note: string; color: string };
   screens: string[];
   twoStepRequired: boolean;
   twoStep: boolean;
@@ -180,7 +180,7 @@ function CustomerStep(props: {
           <span className={ob.walletLabel}>{setup.loyalty ? 'رصيدك الحالي' : 'رصيد البداية'}</span>
           <span className={ob.walletPoints}>{setup.loyalty?.points ?? 0}</span>
         </div>
-        <Bar value={setup.loyalty?.pct ?? '0%'} color="var(--mango)" height={6} track="line" roundFill={false} />
+        <Bar value={setup.loyalty?.pct ?? '0%'} color="var(--gradient-brand-inline)" height={6} track="line" roundFill={false} />
         <span className={ob.walletNote}>
           {setup.loyalty
             ? `وجدنا نقاطك من طلباتك السابقة وربطناها برقمك — أنت في طبقة ${setup.loyalty.tier}، وتفصلك ${setup.loyalty.toNext} نقطة عن مشروب مجاني.`
@@ -213,7 +213,7 @@ function StaffStep(props: {
     return (
       <>
         <StepTitle heading={heading}>دورك وصلاحياتك</StepTitle>
-        <div className={ob.roleCard} style={{ '--tone': setup.role.tone }}>
+        <div className={ob.roleCard} style={{ '--tone': setup.role.color }}>
           <div className={ob.roleHead}>
             <span className={ob.roleDot} aria-hidden="true" />
             <span className={ob.roleName}>{setup.role.name}</span>
