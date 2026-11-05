@@ -3,9 +3,8 @@
 import { useState } from 'react';
 import { ALL } from '@/lib/data/filters';
 import { AVAILABILITY_FILTERS, emptyItemDraft } from '@/lib/data/menu';
-import { ROLES } from '@/lib/roles';
 import { useDashboard, useUiState } from '@/lib/store/DashboardProvider';
-import { menuImageKey } from '@/lib/store/reducer';
+import { activeRole, menuImageKey } from '@/lib/store/reducer';
 import type { MenuItem, MenuItemDraft } from '@/lib/types';
 import { Button } from '@/ui/Button';
 import { Card } from '@/ui/Card';
@@ -43,7 +42,7 @@ export function MenuScreen() {
   const [cat, setCat] = useUiState('menu.cat', ALL);
   const [avail, setAvail] = useUiState('menu.avail', ALL);
   const [form, setForm] = useState<ProductForm>(CLOSED_FORM);
-  const canEdit = ROLES[state.role].editMenu;
+  const canEdit = activeRole(state).editMenu;
   const v = selectMenu(state, { query, cat, avail });
 
   function toggleForm() {

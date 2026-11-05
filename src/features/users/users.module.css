@@ -1,0 +1,256 @@
+.screen {
+  display: grid;
+  gap: 14px;
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+}
+
+/* Like the add-branch bar */
+.addBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: var(--pnl);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  padding: 14px 18px;
+}
+
+.addText {
+  font-size: 12.5px;
+  color: var(--mut);
+  line-height: 1.7;
+  flex: 1;
+  min-width: 260px;
+}
+
+.filters {
+  display: grid;
+  gap: 12px;
+}
+
+.filterRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.statusRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.statusTab {
+  cursor: pointer;
+  font-size: 12px;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink-700);
+}
+
+.statusTab[aria-pressed='true'] {
+  background: var(--teal-700);
+  color: var(--cream-200);
+}
+
+.count {
+  font-size: 11.5px;
+  color: var(--mut);
+}
+
+.feedback {
+  display: grid;
+  gap: 10px;
+}
+
+/* ---- Table ---- */
+.table {
+  overflow-x: auto;
+}
+
+.headRow,
+.row {
+  display: grid;
+  grid-template-columns: minmax(220px, 2.2fr) minmax(150px, 1.4fr) minmax(120px, 1.1fr) minmax(110px, 1fr) minmax(150px, auto);
+  gap: 12px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+}
+
+.headRow {
+  font-size: 11.5px;
+  color: var(--mut);
+  background: var(--pnl2);
+}
+
+.row {
+  font-size: 12.5px;
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.who {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.cell {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.nameLine {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.name {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.you {
+  font-size: 10px;
+  color: var(--txt-brand);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 0 6px;
+}
+
+.small {
+  font-size: 11px;
+  color: var(--mut);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ltr {
+  font-family: var(--font-num);
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+.roleLine {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+.status {
+  font-size: 11.5px;
+}
+
+.rowActions {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.action {
+  cursor: pointer;
+  font-size: 11.5px;
+  color: var(--ink-700);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 5px 11px;
+  white-space: nowrap;
+}
+
+.action:hover {
+  border-color: var(--teal-600);
+  color: var(--ink);
+}
+
+.action[data-tone='bad']:hover {
+  border-color: var(--bad);
+  color: var(--bad);
+}
+
+.empty {
+  padding: 34px 20px;
+  text-align: center;
+  display: grid;
+  gap: 7px;
+}
+
+.emptyTitle {
+  font-size: 13.5px;
+}
+
+.emptyHint {
+  font-size: 11.5px;
+  color: var(--mut);
+}
+
+/* ---- Modals ---- */
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--pnl2);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+}
+
+.summaryText {
+  display: grid;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.section {
+  display: grid;
+  gap: 10px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.sectionTitle {
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--mut);
+  line-height: 1.6;
+}
+
+.modalForm {
+  display: grid;
+  gap: 16px;
+}

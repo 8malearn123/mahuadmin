@@ -1,8 +1,8 @@
 import { sar } from '@/lib/format';
 import { LOG_STATUS_TONES, ORDER_LOG } from '@/lib/data/orders';
 import { ALL } from '@/lib/data/filters';
-import { ROLES, inRoleScope, matchesBranch } from '@/lib/roles';
-import type { DashboardState } from '@/lib/store/reducer';
+import { inRoleScope, matchesBranch } from '@/lib/roles';
+import { activeRole, type DashboardState } from '@/lib/store/reducer';
 
 export interface LogFilters {
   query: string;
@@ -11,7 +11,7 @@ export interface LogFilters {
 }
 
 export function selectLog(state: DashboardState, filters: LogFilters) {
-  const role = ROLES[state.role];
+  const role = activeRole(state);
   const all = ORDER_LOG.filter((r) => matchesBranch(state.branch, r.branch)).filter((r) => inRoleScope(role, r.branch));
   const q = filters.query.trim();
   const rows = all

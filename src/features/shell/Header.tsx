@@ -20,14 +20,16 @@ export function Header({ view }: { view: ViewId }) {
         <span className={styles.subtitle}>{def.subtitle}</span>
       </div>
       <Spacer />
-      <Segmented
-        label="الفرع"
-        options={branchOptions(state)}
-        value={state.branch}
-        onChange={(branch) => dispatch({ type: 'setBranch', branch })}
-        size="md"
-        wide
-      />
+      {!def.hideBranch && (
+        <Segmented
+          label="الفرع"
+          options={branchOptions(state)}
+          value={state.branch}
+          onChange={(branch) => dispatch({ type: 'setBranch', branch })}
+          size="md"
+          wide
+        />
+      )}
       {def.showPeriod && (
         <Segmented
           label="الفترة"

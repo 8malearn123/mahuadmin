@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { sar } from '@/lib/format';
 import { BRANCH_CARDS, EMPTY_BRANCH_DRAFT } from '@/lib/data/org';
-import { ROLES } from '@/lib/roles';
 import { useDashboard, useUiState } from '@/lib/store/DashboardProvider';
+import { activeRole } from '@/lib/store/reducer';
 import { toneColor } from '@/lib/tones';
 import { Button } from '@/ui/Button';
 import { Card } from '@/ui/Card';
@@ -16,7 +16,7 @@ export function BranchesScreen() {
   const { state, dispatch } = useDashboard();
   const [draft, setDraft] = useUiState('branches.draft', EMPTY_BRANCH_DRAFT);
   const [open, setOpen] = useState(false);
-  const scope = ROLES[state.role].scope;
+  const scope = activeRole(state).scope;
   const canAddBranch = scope === 'كامل المنصة' || scope === 'كل الفروع';
 
   function save() {

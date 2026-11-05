@@ -1,7 +1,7 @@
 import { sar } from '@/lib/format';
 import { BASE_BOOKINGS, BOOKING_NEXT, BOOKING_STATUS_TONES, BOX_CATALOG, BOX_DAYS, DELIVERY_WINDOWS } from '@/lib/data/boxes';
-import { ALL_BRANCHES, ROLES, inRoleScope, matchesBranch } from '@/lib/roles';
-import type { DashboardState } from '@/lib/store/reducer';
+import { ALL_BRANCHES, inRoleScope, matchesBranch } from '@/lib/roles';
+import { activeRole, type DashboardState } from '@/lib/store/reducer';
 import type { Booking, Tone } from '@/lib/types';
 
 const PRICE = Object.fromEntries(BOX_CATALOG.map((c) => [c.name, c.price]));
@@ -12,7 +12,7 @@ function capacityTone(pct: number): Tone {
 }
 
 export function selectBoxes(state: DashboardState, selectedDay: number) {
-  const role = ROLES[state.role];
+  const role = activeRole(state);
   const all = [...BASE_BOOKINGS, ...state.bookingsAdded]
     .map((b) => ({
       ...b,

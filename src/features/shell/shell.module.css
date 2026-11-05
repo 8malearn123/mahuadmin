@@ -133,10 +133,51 @@
   flex: 0 0 auto;
 }
 
-.accountRow {
+/* The signed-in account; links to the account page. */
+.me {
   display: flex;
   align-items: center;
   gap: 9px;
+  padding: 5px 6px;
+  margin: 0 -6px;
+  border-radius: var(--radius-sm);
+  color: inherit;
+  text-decoration: none;
+  transition: background var(--dur-fast) var(--ease-standard);
+}
+
+.me:hover,
+.me[aria-current='page'] {
+  background: var(--pnl2);
+  color: inherit;
+}
+
+.meText {
+  display: grid;
+  min-width: 0;
+  flex: 1;
+  line-height: 1.35;
+}
+
+.meName {
+  font-size: 13px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meRole {
+  font-size: 11px;
+  color: rgba(255, 241, 223, 0.72);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meGo {
+  font-size: 16px;
+  color: rgba(255, 241, 223, 0.72);
 }
 
 .avatar {
@@ -154,7 +195,7 @@
 
 .roleSelect {
   box-sizing: border-box;
-  flex: 1;
+  width: 100%;
   min-width: 0;
   cursor: pointer;
   font-size: 12.5px;
@@ -178,12 +219,14 @@
   line-height: 1.3;
 }
 
-.who {
+.metaButton {
+  cursor: pointer;
   color: rgba(255, 241, 223, 0.82);
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+}
+
+.metaButton:hover {
+  color: #FFF1DF;
+  text-decoration: underline;
 }
 
 .flex {
@@ -255,6 +298,25 @@
   font-size: 11.5px;
   color: var(--mut);
   line-height: 1.7;
+}
+
+.previewTag {
+  color: var(--ink);
+}
+
+.bannerAction {
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-size: 11.5px;
+  color: var(--txt-brand);
+  font-weight: 700;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 5px 12px;
+}
+
+.bannerAction:hover {
+  border-color: var(--teal-600);
 }
 
 .content {

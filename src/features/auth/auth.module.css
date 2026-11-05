@@ -1,0 +1,492 @@
+/* ---- Frame: pine brand panel (like the sidebar) beside the form column ---- */
+.page {
+  direction: rtl;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(340px, 40%) minmax(0, 1fr);
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.brand {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #0E5B55;
+  color: #FFF1DF;
+}
+
+.brandHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 28px 40px 0;
+}
+
+.logo {
+  font-family: var(--font-num);
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 1;
+  color: #FFF1DF;
+  text-decoration: none;
+}
+
+.brandText {
+  display: grid;
+}
+
+.brandName {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.brandMeta {
+  font-size: 11px;
+  color: rgba(255, 241, 223, 0.72);
+}
+
+.pitch {
+  padding: 56px 40px 24px;
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  max-width: 460px;
+}
+
+.headline {
+  margin: 0;
+  font-family: var(--font-num);
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 1.05;
+  color: #FFF1DF;
+}
+
+.lead {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(255, 241, 223, 0.82);
+}
+
+.points {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.point {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 241, 223, 0.9);
+}
+
+.pointMark {
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--scene-sun);
+  transform: translateY(-1px);
+}
+
+/* The brand's signature scene: sun, hills, headland, sea and beach, flat like print. */
+.scene {
+  margin-top: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sun {
+  fill: var(--scene-sun);
+}
+
+.hills {
+  fill: var(--scene-hills);
+}
+
+.headland {
+  fill: #0A4A45;
+}
+
+.sea {
+  fill: var(--scene-sea);
+}
+
+.beach {
+  fill: var(--scene-beach);
+}
+
+/* ---- Form column ---- */
+.main {
+  min-width: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px 20px 24px;
+}
+
+.footer {
+  margin-top: 8px;
+  font-size: 11.5px;
+  color: var(--mut);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+/* ---- Card ---- */
+.card {
+  box-sizing: border-box;
+  width: min(440px, 100%);
+  background: var(--pnl);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
+  padding: 26px 28px 24px;
+  display: grid;
+  gap: 18px;
+}
+
+.wide {
+  width: min(600px, 100%);
+}
+
+.cardHead {
+  display: grid;
+  gap: 8px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--mut);
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--mango);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-num);
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 1.1;
+  color: var(--txt-brand);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--mut);
+}
+
+.form {
+  display: grid;
+  gap: 14px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 14px;
+}
+
+.cardFoot {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  font-size: 12.5px;
+  color: var(--mut);
+  text-align: center;
+  line-height: 1.8;
+}
+
+.link {
+  color: var(--text-brand);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--teal-700);
+  text-decoration: underline;
+}
+
+.smallLink {
+  font-size: 11.5px;
+  color: var(--text-brand);
+  text-decoration: none;
+}
+
+.smallLink:hover {
+  text-decoration: underline;
+}
+
+/* Button that reads as a link (actions such as "تعديل الرقم"). */
+.textButton {
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text-brand);
+  font-weight: 700;
+}
+
+.textButton:hover {
+  text-decoration: underline;
+}
+
+.textButton[aria-disabled='true'] {
+  color: var(--mut);
+  cursor: default;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.muted {
+  font-size: 12px;
+  color: var(--mut);
+  line-height: 1.7;
+}
+
+.phone {
+  font-family: var(--font-num);
+  direction: ltr;
+  unicode-bidi: isolate;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+/* ---- Lock screen ---- */
+.lockWho {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lockName {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* The lock screen over the dashboard: covers it completely and scrolls on its own. */
+.lockLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow-y: auto;
+  background: var(--bg);
+}
+
+/* ---- Resend row under code fields ---- */
+.resend {
+  display: flex;
+  align-items: center;
+  gap: 6px 14px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--mut);
+}
+
+.countdown {
+  font-family: var(--font-num);
+  color: var(--ink);
+}
+
+.resendNote {
+  flex-basis: 100%;
+  font-size: 11.5px;
+}
+
+.resendNote[data-tone='bad'] {
+  color: var(--bad);
+}
+
+.resendNote[data-tone='ok'] {
+  color: var(--ok);
+}
+
+/* ---- Demo-only panels (dashed sandy border, like branches added this session) ---- */
+.demo {
+  box-sizing: border-box;
+  width: min(440px, 100%);
+  background: var(--pnl);
+  border: 1px dashed var(--mango);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.demoWide {
+  width: min(600px, 100%);
+}
+
+.demoHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.demoMeta {
+  margin-right: auto;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--mut);
+}
+
+.demoNote {
+  font-size: 11px;
+  color: var(--mut);
+  line-height: 1.7;
+}
+
+.message {
+  background: var(--pnl2);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 12.5px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.messageCode {
+  font-family: var(--font-num);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--txt-brand);
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+.demoAccounts {
+  display: grid;
+  gap: 6px;
+}
+
+.demoAccount {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--pnl);
+  text-align: right;
+  transition: background var(--dur-fast) var(--ease-standard);
+}
+
+.demoAccount:hover {
+  background: var(--pnl2);
+}
+
+.demoRole {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  font-weight: 700;
+  min-width: 132px;
+}
+
+.demoDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.demoUser {
+  font-size: 12px;
+  color: var(--mut);
+}
+
+.demoGo {
+  margin-right: auto;
+  font-size: 11.5px;
+  color: var(--text-brand);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ---- Small screens: the brand panel becomes a header strip ---- */
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .brand {
+    position: static;
+    height: auto;
+    border-bottom: 4px solid transparent;
+    border-image: linear-gradient(to left, var(--scene-sun) 0 25%, var(--scene-hills) 25% 50%, var(--scene-sea) 50% 75%, var(--scene-beach) 75% 100%) 1;
+  }
+
+  .brandHead {
+    padding: 14px 20px;
+  }
+
+  .logo {
+    font-size: 30px;
+  }
+
+  .pitch,
+  .scene {
+    display: none;
+  }
+
+  .main {
+    min-height: 0;
+    justify-content: flex-start;
+    padding: 24px 16px 20px;
+  }
+
+  .card {
+    padding: 22px 18px 20px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .demoRole {
+    min-width: 0;
+  }
+}

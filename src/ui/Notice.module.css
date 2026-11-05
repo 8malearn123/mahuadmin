@@ -1,0 +1,26 @@
+.notice {
+  --edge: var(--palm);
+  background: var(--pnl);
+  border: 1px solid var(--line);
+  border-right: 3px solid var(--edge);
+  border-radius: var(--radius-sm);
+  padding: 10px 13px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.notice[data-tone='ok'] {
+  --edge: var(--teal-700);
+  background: var(--teal-050);
+}
+
+.notice[data-tone='warn'] {
+  --edge: var(--mango);
+  background: var(--sandy-brown-050);
+}
+
+.notice[data-tone='bad'] {
+  --edge: var(--fill-bad);
+  background: var(--fire-opal-050);
+}

@@ -16,6 +16,15 @@
   padding: 10px 12px;
 }
 
+.control:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+
+.control[aria-invalid='true'] {
+  border-color: var(--bad);
+}
+
 .numeric {
   font-family: var(--font-num);
 }

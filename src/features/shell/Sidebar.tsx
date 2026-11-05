@@ -2,13 +2,18 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { signOut } from '@/features/auth/actions';
 import { PUBLIC_SITE_URL } from '@/lib/config';
-import { ROLE_IDS, ROLES } from '@/lib/roles';
+import { initialOf } from '@/lib/format';
+import { ROLE_IDS, ROLES, scopeRole } from '@/lib/roles';
 import { useDashboard } from '@/lib/store/DashboardProvider';
+import { activeRole } from '@/lib/store/reducer';
+import { useSessionUser } from '@/lib/store/SessionProvider';
 import { toneColor } from '@/lib/tones';
 import type { RoleId, ViewId } from '@/lib/types';
 import { NAV_GROUPS, PINNED_VIEW, VIEWS } from '@/lib/views';
 import { cx } from '@/ui/cx';
+import { useSessionControls } from './SessionGuard';
 import styles from './shell.module.css';
 
 function NavItem({ view, active, pinned }: { view: ViewId; active: boolean; pinned?: boolean }) {
@@ -22,13 +27,17 @@ function NavItem({ view, active, pinned }: { view: ViewId; active: boolean; pinn
 
 export function Sidebar({ view }: { view: ViewId | null }) {
   const router = useRouter();
+  const user = useSessionUser();
+  const { lock, announceSignOut } = useSessionControls();
   const { state, dispatch } = useDashboard();
-  const role = ROLES[state.role];
+  const role = activeRole(state);
+  const own = scopeRole(ROLES[user.role], user.branch);
   const groups = NAV_GROUPS.map((g) => ({ ...g, views: g.views.filter((v) => role.views.includes(v)) })).filter(
     (g) => g.views.length > 0,
   );
 
-  function switchRole(id: RoleId) {
+  // Admins can preview what another role sees; it opens that role's first screen, as the role switcher did.
+  function preview(id: RoleId) {
     dispatch({ type: 'switchRole', role: id });
     router.replace(VIEWS[ROLES[id].views[0]].href);
   }
@@ -54,25 +63,38 @@ export function Sidebar({ view }: { view: ViewId | null }) {
         ))}
       </nav>
       <div className={styles.account}>
-        <div className={styles.accountRow}>
-          <span className={styles.avatar}>{role.user.slice(0, 1)}</span>
-          <select
-            className={styles.roleSelect}
-            value={state.role}
-            onChange={(e) => switchRole(e.target.value as RoleId)}
-            aria-label="الدور"
-          >
+        <Link href="/account" className={styles.me} aria-current={view === 'account' ? 'page' : undefined} title="حسابي">
+          <span className={styles.avatar}>{initialOf(user.name)}</span>
+          <span className={styles.meText}>
+            <span className={styles.meName}>{user.name}</span>
+            <span className={styles.meRole}>
+              {own.name} · {own.perBranch ? user.branch : own.scope}
+            </span>
+          </span>
+          <span className={styles.meGo} aria-hidden="true">
+            ‹
+          </span>
+        </Link>
+        {user.role === 'admin' && (
+          <select className={styles.roleSelect} value={state.role} onChange={(e) => preview(e.target.value as RoleId)} aria-label="معاينة الدور">
             {ROLE_IDS.map((id) => (
               <option key={id} value={id}>
-                {ROLES[id].name}
+                {id === user.role ? ROLES[id].name + ' — دورك' : 'معاينة: ' + ROLES[id].name}
               </option>
             ))}
           </select>
-        </div>
+        )}
         <div className={styles.accountMeta}>
-          <span className={styles.who}>
-            {role.user} · {role.scope}
-          </span>
+          {user.idleMinutes !== null && (
+            <button type="button" className={styles.metaButton} onClick={lock}>
+              قفل الشاشة
+            </button>
+          )}
+          <form action={signOut} onSubmit={announceSignOut}>
+            <button type="submit" className={styles.metaButton}>
+              تسجيل الخروج
+            </button>
+          </form>
           <span className={styles.flex} />
           <a href={PUBLIC_SITE_URL} className={styles.siteLink}>
             الموقع العام ↗
