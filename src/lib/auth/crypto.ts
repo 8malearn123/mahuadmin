@@ -25,6 +25,7 @@ export function safeEqual(a: string, b: string): boolean {
 
 /** A six-digit one-time code (leading zeros allowed). */
 export function generateCode(): string {
+  if (CODE.fixed) return CODE.fixed;
   return String(randomInt(0, 10 ** CODE.length)).padStart(CODE.length, '0');
 }
 

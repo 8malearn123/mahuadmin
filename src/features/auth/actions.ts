@@ -168,7 +168,10 @@ export async function verifyTwoStep(_prev: FormState<'code'>, fd: FormData): Pro
   const { db, auth } = await pendingTwoStep();
   // Each sign-in gets fresh attempts, so also cap guesses per account across sign-ins.
   if (!hit(db, 'two-step:' + auth.user.id, 10, 15 * MINUTE).ok) return { error: 'محاولات كثيرة. انتظر بضع دقائق ثم سجّل الدخول من جديد.' };
-  const challenge = openChallenge(db, 'two-step', { sessionId: auth.session.id });
+  const challenge =
+    openChallenge(db, 'two-step', { sessionId: auth.session.id }) ??
+    // Issued by another server instance: with the fixed demo code, a fresh one checks the same.
+    (CODE.fixed ? issueChallenge(db, { purpose: 'two-step', userId: auth.user.id, sessionId: auth.session.id, channel: 'whatsapp', destination: auth.user.phone }) : undefined);
   if (!challenge) return { errors: { code: 'انتهت صلاحية الرمز — اطلب رمزًا جديدًا.' } };
   const result = checkCode(challenge, code);
   if (!result.ok) return { errors: { code: result.error }, at: Date.now() };

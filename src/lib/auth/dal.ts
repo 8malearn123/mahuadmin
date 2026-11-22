@@ -6,7 +6,7 @@ import { ROLES, canOpenView } from '../roles';
 import type { ViewId } from '../types';
 import { landingHref } from '../views';
 import { MINUTE } from './config';
-import { readSessionCookie } from './session';
+import { readSessionCookie, type SessionClaims } from './session';
 import { getDb, type Db, type SessionRecord, type UserRecord } from './store';
 import type { SessionUser, SignOutReason } from './types';
 import { safeNext } from './validation';
@@ -47,11 +47,36 @@ export function isLocked(session: SessionRecord, user: UserRecord, now = Date.no
   return limit !== null && now - session.lastSeenAt > limit;
 }
 
+/**
+ * A session this server instance hasn't seen, rebuilt from the signed cookie. The store lives
+ * in memory and each serverless instance has its own, so a sign-in handled by one instance
+ * would otherwise look expired to the next. Sessions ended here (sign-out) stay ended.
+ */
+function restoreSession(db: Db, cookie: { id: string; claims?: SessionClaims }, now: number): SessionRecord | undefined {
+  const c = cookie.claims;
+  if (!c || c.expiresAt <= now || db.ended.has(cookie.id) || !db.users.has(c.userId)) return undefined;
+  const session: SessionRecord = {
+    id: cookie.id,
+    userId: c.userId,
+    stage: c.stage,
+    createdAt: c.createdAt,
+    expiresAt: c.expiresAt,
+    lastSeenAt: now,
+    remember: c.remember,
+    device: 'هذا الجهاز',
+    lockedAt: null,
+    failedUnlocks: 0,
+    returnTo: c.returnTo,
+  };
+  db.sessions.set(session.id, session);
+  return session;
+}
+
 /** Works out the auth state from the session cookie and the store (no side effects). */
 export function resolveAuth(db: Db, cookie: Awaited<ReturnType<typeof readSessionCookie>>, now = Date.now()): AuthState {
   if (cookie === null) return { status: 'signed-out', reason: null };
   if ('invalid' in cookie) return { status: 'signed-out', reason: 'expired' };
-  const session = db.sessions.get(cookie.id);
+  const session = db.sessions.get(cookie.id) ?? restoreSession(db, cookie, now);
   if (!session || session.expiresAt <= now) return { status: 'signed-out', reason: db.ended.get(cookie.id)?.reason ?? 'expired' };
   const user = db.users.get(session.userId);
   if (!user) return { status: 'signed-out', reason: 'revoked' };
