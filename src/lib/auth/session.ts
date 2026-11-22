@@ -33,6 +33,37 @@ interface NewSession {
   returnTo?: string | null;
 }
 
+/**
+ * What the session cookie carries besides the id, so any server instance can rebuild the
+ * session: the store is in memory and each serverless instance (Vercel) has its own copy.
+ * The cookie is HMAC-signed, so these can't be forged.
+ */
+export interface SessionClaims {
+  userId: string;
+  stage: SessionRecord['stage'];
+  remember: boolean;
+  createdAt: number;
+  expiresAt: number;
+  returnTo: string | null;
+}
+
+function encodeSession(session: SessionRecord): string {
+  const claims = [session.id, session.userId, session.stage, session.remember ? 1 : 0, session.createdAt, session.returnTo ?? ''];
+  return Buffer.from(JSON.stringify(claims)).toString('base64url');
+}
+
+function decodeSession(payload: string, expiresAt: number): { id: string; claims?: SessionClaims } {
+  try {
+    const [id, userId, stage, remember, createdAt, returnTo] = JSON.parse(Buffer.from(payload, 'base64url').toString('utf8'));
+    if (typeof id === 'string' && typeof userId === 'string' && (stage === 'two-step' || stage === 'active')) {
+      return { id, claims: { userId, stage, remember: remember === 1, createdAt: Number(createdAt) || Date.now(), expiresAt, returnTo: returnTo || null } };
+    }
+  } catch {
+    // An older cookie that holds only the session id.
+  }
+  return { id: payload };
+}
+
 /** Creates a session and sets its cookie. Always a fresh id, so a sign-in never reuses an old one. */
 export async function startSession(db: Db, user: UserRecord, opts: NewSession, now = Date.now()): Promise<SessionRecord> {
   const ttl = opts.stage === 'two-step' ? SESSION_TTL.twoStep : opts.remember ? SESSION_TTL.remembered : SESSION_TTL.standard;
@@ -52,7 +83,7 @@ export async function startSession(db: Db, user: UserRecord, opts: NewSession, n
   db.sessions.set(session.id, session);
   // Without "تذكرني" the cookie lasts for the browser session (and the server ends it after 12 hours).
   const persistent = opts.remember || opts.stage === 'two-step';
-  (await cookies()).set(SESSION_COOKIE, signToken(session.id, session.expiresAt), {
+  (await cookies()).set(SESSION_COOKIE, signToken(encodeSession(session), session.expiresAt), {
     ...base,
     ...(persistent ? { expires: new Date(session.expiresAt) } : {}),
   });
@@ -60,11 +91,11 @@ export async function startSession(db: Db, user: UserRecord, opts: NewSession, n
 }
 
 /** The session id from the cookie; `invalid` when a cookie exists but is forged or expired. */
-export async function readSessionCookie(): Promise<{ id: string } | { invalid: true } | null> {
+export async function readSessionCookie(): Promise<{ id: string; claims?: SessionClaims } | { invalid: true } | null> {
   const token = (await cookies()).get(SESSION_COOKIE)?.value;
   if (!token) return null;
   const read = readToken(token);
-  return read ? { id: read.payload } : { invalid: true };
+  return read ? decodeSession(read.payload, read.expiresAt) : { invalid: true };
 }
 
 export async function clearSessionCookie() {
