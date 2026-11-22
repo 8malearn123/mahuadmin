@@ -38,6 +38,11 @@ export const CODE = {
   resendSeconds: 45,
   /** Sends per challenge, including the first. */
   maxSends: 5,
+  /**
+   * Temporary: every code is this fixed value until WhatsApp/SMS sending is connected.
+   * Set to null to go back to random codes.
+   */
+  fixed: '000000' as string | null,
 };
 
 /** Wrong passwords in a row before sign-in pauses for the account. */
